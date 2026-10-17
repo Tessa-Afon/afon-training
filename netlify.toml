@@ -1,0 +1,10 @@
+# Netlify build settings. This file overrides the dashboard's build
+# settings, so the deploy doesn't depend on them.
+[build]
+  command = "pnpm run build"
+  # Next.js output; Netlify's Next.js runtime takes it from here. Must not
+  # be the repository root (Netlify rejects publish == base directory).
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
