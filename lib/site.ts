@@ -1,9 +1,9 @@
 import type { Course } from "./courses";
 import { formatDate, formatTimeRange } from "./courses";
 
-// Contact address for enquiries. Peter's address while the site is in testing;
-// swap for the AFon Training address once it exists.
-export const CONTACT_EMAIL = "peter@receptconsulting.com";
+// Contact address for enquiries and bookings (an alias on Tess's Zoho
+// mailbox).
+export const CONTACT_EMAIL = "bookings@afontraining.co.uk";
 
 export const SITE_NAME = "AFon Training";
 
