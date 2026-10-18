@@ -1,6 +1,6 @@
-# AFon Training: theme design brief for CC
+# Afon Training: theme design brief for CC
 
-Use the **Heather & Marigold** direction for AFon Training, a training provider serving GP practices, hospitals, care homes and the leisure sector. The website should feel clean, distinctive, approachable and professionally credible: a specialist training business, not an NHS website, wellness brand or generic course marketplace.
+Use the **Heather & Marigold** direction for Afon Training, a training provider serving GP practices, hospitals, care homes and the leisure sector. The website should feel clean, distinctive, approachable and professionally credible: a specialist training business, not an NHS website, wellness brand or generic course marketplace.
 
 ## Colour and typography
 

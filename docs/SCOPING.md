@@ -1,6 +1,6 @@
-# AFon Training: scoping
+# Afon Training: scoping
 
-Working name: **AFon Training** (may change). Formerly discussed as "Thornfields Light".
+Working name: **Afon Training** (may change). Formerly discussed as "Thornfields Light".
 This project is entirely separate from Recept Training.
 
 This document keeps the full, aspirational scope. We are building in small steps; see **Current phase** first.
@@ -18,7 +18,7 @@ Nothing beyond this is built until the design is approved.
 ### Planned site map
 
 ```
-AFon Training
+Afon Training
 ├── Home
 ├── Courses
 │   └── Course detail / booking enquiry
@@ -58,7 +58,7 @@ Clear, relevant courses for people working in GP practices, hospitals, care home
 
 **Intro**
 Training that fits real working life
-AFon Training provides focused, practical learning delivered in a clear and approachable way. Browse upcoming courses and contact us to reserve your place.
+Afon Training provides focused, practical learning delivered in a clear and approachable way. Browse upcoming courses and contact us to reserve your place.
 
 **Course prompt**
 Upcoming courses
@@ -71,7 +71,7 @@ If you would like to discuss an upcoming course or training for your organisatio
 [Contact us]
 
 **Footer**
-AFon Training
+Afon Training
 Practical training for professional teams.
 [Courses] · [Contact us] · [Privacy]
 

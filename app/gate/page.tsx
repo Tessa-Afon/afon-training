@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BrandMark from "@/components/BrandMark";
 import GateForm from "./GateForm";
 
-export const metadata: Metadata = { title: "Preview access · AFon Training" };
+export const metadata: Metadata = { title: "Preview access · Afon Training" };
 
 export default async function GatePage({
   searchParams,
@@ -16,7 +16,7 @@ export default async function GatePage({
       <div className="gate-card">
         <p className="brand">
           <BrandMark />
-          AFon Training
+          Afon Training
         </p>
         <h1>This site is in preview</h1>
         <p className="gate-lede">Enter the preview password to continue.</p>

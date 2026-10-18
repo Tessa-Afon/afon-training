@@ -3,7 +3,7 @@ import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
 import { CONTACT_EMAIL } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Privacy · AFon Training" };
+export const metadata: Metadata = { title: "Privacy · Afon Training" };
 
 // Draft. To be reviewed before launch, and extended once online booking,
 // payments or analytics are added.

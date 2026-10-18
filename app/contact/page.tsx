@@ -3,7 +3,7 @@ import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
 import { CONTACT_EMAIL, contactHref } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Contact us · AFon Training" };
+export const metadata: Metadata = { title: "Contact us · Afon Training" };
 
 export default function ContactPage() {
   return (

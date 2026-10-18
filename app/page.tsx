@@ -33,7 +33,7 @@ export default function Home() {
             <h2>Training that fits real working life</h2>
           </div>
           <p>
-            AFon Training provides focused, practical learning delivered in a
+            Afon Training provides focused, practical learning delivered in a
             clear and approachable way. Browse upcoming courses and contact us
             to reserve your place.
           </p>

@@ -3,14 +3,14 @@ import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
 import ContactPrompt from "@/components/ContactPrompt";
 
-export const metadata: Metadata = { title: "About · AFon Training" };
+export const metadata: Metadata = { title: "About · Afon Training" };
 
 export default function AboutPage() {
   return (
     <SitePage current="about">
-      <PageHeading title="About AFon Training">
+      <PageHeading title="About Afon Training">
         <p>
-          AFon Training provides focused, practical learning delivered in a
+          Afon Training provides focused, practical learning delivered in a
           clear and approachable way, for people working in GP practices,
           hospitals, care homes and the leisure sector.
         </p>

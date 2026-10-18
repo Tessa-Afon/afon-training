@@ -4,7 +4,7 @@ import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
 import { contactHref } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Training for your team · AFon Training" };
+export const metadata: Metadata = { title: "Training for your team · Afon Training" };
 
 const SECTORS = [
   { name: "GP practices", text: "Training for clinical and non-clinical practice staff." },

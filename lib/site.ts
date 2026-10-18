@@ -5,9 +5,9 @@ import { formatDate, formatTimeRange } from "./courses";
 // mailbox).
 export const CONTACT_EMAIL = "bookings@afontraining.co.uk";
 
-export const SITE_NAME = "AFon Training";
+export const SITE_NAME = "Afon Training";
 
-export function contactHref(subject = "AFon Training enquiry", body?: string) {
+export function contactHref(subject = "Afon Training enquiry", body?: string) {
   const params = [`subject=${encodeURIComponent(subject)}`];
   if (body) params.push(`body=${encodeURIComponent(body)}`);
   return `mailto:${CONTACT_EMAIL}?${params.join("&")}`;

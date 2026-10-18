@@ -1,6 +1,6 @@
-# AFon Training
+# Afon Training
 
-Website for AFon Training (working name). Separate from Recept Training.
+Website for Afon Training (working name). Separate from Recept Training.
 
 Next.js and Tailwind, hosted on Netlify (free plan), with Supabase when bookings need a database. Kept separate from the Recept apps so it can be handed over.
 

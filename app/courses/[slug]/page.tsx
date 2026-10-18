@@ -16,7 +16,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const course = findCourse((await params).slug);
-  return { title: course ? `${course.title} · AFon Training` : "Course not found" };
+  return { title: course ? `${course.title} · Afon Training` : "Course not found" };
 }
 
 export default async function CoursePage({ params }: Params) {

@@ -5,7 +5,7 @@ import PageHeading from "@/components/PageHeading";
 import CourseCard from "@/components/CourseCard";
 import { groupByMonth, upcomingCourses } from "@/lib/courses";
 
-export const metadata: Metadata = { title: "Upcoming courses · AFon Training" };
+export const metadata: Metadata = { title: "Upcoming courses · Afon Training" };
 
 // Rebuild hourly so past courses drop off without a redeploy.
 export const revalidate = 3600;

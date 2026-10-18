@@ -5,7 +5,7 @@ export default function SiteFooter() {
     <footer className="site-footer">
       <div className="wrap">
         <div>
-          <Link className="brand" href="/">AFon Training</Link>
+          <Link className="brand" href="/">Afon Training</Link>
           <p>Practical training for professional teams.</p>
         </div>
         <nav className="footer-links" aria-label="Footer">
@@ -15,7 +15,7 @@ export default function SiteFooter() {
         </nav>
       </div>
       <div className="legal">
-        <div className="wrap">© {new Date().getFullYear()} AFon Training</div>
+        <div className="wrap">© {new Date().getFullYear()} Afon Training</div>
       </div>
     </footer>
   );

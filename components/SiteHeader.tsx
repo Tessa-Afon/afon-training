@@ -15,9 +15,9 @@ export default function SiteHeader({ current }: { current?: NavKey }) {
   return (
     <header className="site-header">
       <div className="wrap">
-        <Link className="brand" href="/" aria-label="AFon Training home">
+        <Link className="brand" href="/" aria-label="Afon Training home">
           <BrandMark />
-          AFon Training
+          Afon Training
         </Link>
         <nav className="nav" aria-label="Main">
           {LINKS.map((l) => (

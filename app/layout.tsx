@@ -15,7 +15,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "AFon Training",
+  title: "Afon Training",
   description:
     "Practical training for people working in GP practices, hospitals, care homes and the leisure sector.",
   robots: { index: false, follow: false },
