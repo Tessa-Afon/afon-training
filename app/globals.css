@@ -228,3 +228,6 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 }
 .credentials { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
 .trainer-quote { border-left: 3px solid var(--marigold); padding-left: 16px; font-style: italic; color: var(--plum); }
+.protrainings-badge { display: inline-block; justify-self: start; }
+.protrainings-badge img { display: block; width: 180px; height: auto; }
+.pt-video { max-width: 100%; overflow: hidden; }

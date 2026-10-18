@@ -42,7 +42,10 @@ export default function PrivacyPage() {
           </p>
           <h2>Cookies</h2>
           <p>
-            This website does not use tracking or advertising cookies.
+            This website does not use tracking or advertising cookies. The
+            About page shows a badge and a video supplied by ProTrainings,
+            which are loaded from their servers and may set their own
+            cookies.
           </p>
           <h2>Your rights</h2>
           <p>

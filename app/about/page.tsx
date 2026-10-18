@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
 import ContactPrompt from "@/components/ContactPrompt";
+import { ProTrainingsBadge, ProTrainingsVideo } from "@/components/ProTrainings";
 
 export const metadata: Metadata = { title: "About · Afon Training" };
 
@@ -65,6 +66,9 @@ export default function AboutPage() {
               empower staff to be the best they can be, and in turn to provide
               the best care and outcomes for patients.
             </p>
+            <p>Tess is certified by ProTrainings.</p>
+            <ProTrainingsBadge />
+            <ProTrainingsVideo />
           </div>
         </div>
       </section>
