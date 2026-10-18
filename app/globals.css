@@ -29,6 +29,17 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
+/* River watermark (the Afon): a faint greyscale photo fixed behind every
+   page. Cards and forms stay solid white so text is never over the image. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("/afon-river-watermark.webp") center / cover no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+}
 h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -42,7 +53,7 @@ a { color: inherit; }
 .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
 
 /* Header */
-.site-header { background: var(--off-white); border-bottom: 1px solid var(--line); }
+.site-header { background: rgba(251, 247, 242, .92); border-bottom: 1px solid var(--line); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; }
 .brand svg { flex: none; }
@@ -74,8 +85,8 @@ a:focus-visible, .btn:focus-visible { outline: 3px solid var(--heather); outline
 
 /* Sections */
 section.band { padding-block: clamp(56px, 8vw, 96px); }
-.band-white { background: var(--white); border-block: 1px solid var(--line); }
-.band-heather { background: var(--pale-heather); }
+.band-white { background: rgba(255, 255, 255, .85); border-block: 1px solid var(--line); }
+.band-heather { background: rgba(233, 221, 235, .88); }
 .eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--heather); margin-bottom: 12px; }
 .band h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
 
@@ -200,6 +211,20 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .contact-details { display: grid; gap: 28px; align-content: start; }
 .booking-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(20px, 4vw, 40px); align-items: start; }
-.placeholder-note { color: var(--ink-soft); font-style: italic; }
 @media (max-width: 860px) { .booking-grid { grid-template-columns: 1fr; } }
 .contact-grid .contact-card .site-form, .contact-grid .contact-card .form-done { justify-self: stretch; width: 100%; }
+
+/* Course detail page */
+.page-subtitle { font-weight: 600; color: var(--plum); margin-bottom: 8px; }
+.course-detail { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(24px, 5vw, 56px); align-items: start; }
+.course-detail-body { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: clamp(24px, 4vw, 40px); max-width: none; }
+.course-detail-body h2 { font-size: clamp(1.2rem, 2vw, 1.4rem); margin-top: 12px; }
+.course-detail-body ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.course-includes { font-weight: 600; color: var(--heather); }
+.course-detail-aside { position: sticky; top: 24px; }
+@media (max-width: 860px) {
+  .course-detail { grid-template-columns: 1fr; }
+  .course-detail-aside { position: static; order: -1; }
+}
+.credentials { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.trainer-quote { border-left: 3px solid var(--marigold); padding-left: 16px; font-style: italic; color: var(--plum); }

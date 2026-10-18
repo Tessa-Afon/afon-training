@@ -14,6 +14,19 @@ export type Course = {
   trainer: string;
   maxAttendees: number;
   status: CourseStatus;
+  details?: CourseDetails;
+};
+
+// Full course information, shown on the course page. Optional: courses
+// without it show just their one-line description.
+export type CourseDetails = {
+  subtitle: string;
+  intro: string[];
+  includes?: string;
+  whoShouldAttend: string[];
+  covers: string[];
+  outcomes: string[];
+  beforeAttending?: string;
 };
 
 const HALF_DAY = 49;
@@ -29,8 +42,8 @@ const DEFAULTS = {
 const DESCRIPTIONS: Record<string, string> = {
   "Improving the Patient Experience":
     "Practical ways to make every patient interaction clearer, more respectful and more responsive.",
-  "Clinical Notes Summarising":
-    "Build confidence in reviewing, organising and summarising clinical records accurately and consistently.",
+  "Medical Record Summarising for GP Practices":
+    "Develop a structured approach to reviewing and summarising patient records, identifying relevant information and maintaining clear, consistent electronic summaries.",
   "Handling Abusive Patients and Conflict Resolution":
     "Practical techniques for responding calmly, setting boundaries and managing challenging behaviour safely.",
   "Chaperone Training":
@@ -45,18 +58,55 @@ const DESCRIPTIONS: Record<string, string> = {
     "Understand how to prepare staff, evidence and everyday systems for a confident CQC inspection.",
 };
 
+const DETAILS: Record<string, CourseDetails> = {
+  "Medical Record Summarising for GP Practices": {
+    subtitle: "A practical, interactive workshop for Primary Care staff",
+    intro: [
+      "This workshop is designed for staff responsible for medical record summarising in general practice. Through practical examples and discussion, delegates will explore the purpose of summarising and work through a suggested step-by-step approach to reviewing the records of newly registered patients.",
+      "The session will also explore how relevant information from incoming clinical correspondence contributes to an accurate, up-to-date patient record, with an emphasis on working within agreed practice procedures and recognising when clinical clarification is needed.",
+    ],
+    includes: "Certificate of attendance and electronic workbook included.",
+    whoShouldAttend: [
+      "New medical record summarisers.",
+      "Medical administrators and other primary care staff whose roles include summarising or clinical coding.",
+      "Existing summarisers looking to refresh their approach and improve consistency.",
+    ],
+    covers: [
+      "The purpose of medical record summarising and its role in supporting continuity of care.",
+      "A step-by-step approach to reviewing and organising historical records.",
+      "Identifying relevant diagnoses, significant medical and surgical history, allergies and other information within the agreed scope of the summariser's role.",
+      "Using clinical terminology and coding appropriately, including SNOMED CT where applicable.",
+      "Recording information accurately without introducing unsupported assumptions or diagnoses.",
+      "Recognising missing, conflicting, duplicated or unclear information and knowing when to escalate it.",
+      "Extracting relevant information from incoming correspondence and distinguishing recording tasks from requests requiring clinical review or action.",
+      "Confidentiality, secure handling of patient information and working within local procedures.",
+      "Practical examples and opportunities for discussion.",
+    ],
+    outcomes: [
+      "Explain the purpose and scope of medical record summarising.",
+      "Apply a structured approach to reviewing a newly registered patient's records.",
+      "Identify information for inclusion in a summary in accordance with agreed practice procedures.",
+      "Explain the importance of accurate coding and clear supporting documentation.",
+      "Recognise uncertainty and situations requiring review by an appropriate clinician.",
+      "Describe how their work should be checked and supported within the practice.",
+    ],
+    beforeAttending:
+      "Delegates should have a working knowledge of medical terminology, experience of navigating their practice's clinical system and familiarity with the clinical coding terminology used in their setting. This should include familiarity with SNOMED CT. Read/CTV3 knowledge may be useful for understanding historical records but is not essential.",
+  },
+};
+
 // [date, title, start, end, price]
 const SCHEDULE: [string, string, string, string, number][] = [
   ["2027-04-13", "Improving the Patient Experience", "13:00", "16:00", HALF_DAY],
-  ["2027-04-14", "Clinical Notes Summarising", "09:30", "12:30", HALF_DAY],
+  ["2027-04-14", "Medical Record Summarising for GP Practices", "09:30", "12:30", HALF_DAY],
   ["2027-04-15", "Handling Abusive Patients and Conflict Resolution", "13:00", "16:00", HALF_DAY],
-  ["2027-04-20", "Clinical Notes Summarising", "13:00", "16:00", HALF_DAY],
+  ["2027-04-20", "Medical Record Summarising for GP Practices", "13:00", "16:00", HALF_DAY],
   ["2027-04-21", "Chaperone Training", "13:00", "16:00", HALF_DAY],
   ["2027-04-22", "Medical Terminology for Non-Clinical Staff", "09:30", "16:30", FULL_DAY],
   ["2027-05-05", "Excellent Customer Service and Improving the Patient Experience", "09:30", "16:30", FULL_DAY],
   ["2027-05-19", "Handling Abusive Patients and Conflict Resolution", "13:00", "16:00", HALF_DAY],
   ["2027-06-15", "Chaperone Training", "13:00", "16:00", HALF_DAY],
-  ["2027-06-16", "Clinical Notes Summarising", "13:00", "16:00", HALF_DAY],
+  ["2027-06-16", "Medical Record Summarising for GP Practices", "13:00", "16:00", HALF_DAY],
   ["2027-06-17", "Mental Health Awareness", "13:00", "16:00", HALF_DAY],
   ["2027-06-22", "Medical Terminology for Non-Clinical Staff", "09:30", "16:30", FULL_DAY],
   ["2027-06-23", "Handling Abusive Patients and Conflict Resolution", "13:00", "16:00", HALF_DAY],
@@ -73,6 +123,7 @@ export const COURSES: Course[] = SCHEDULE.map(([date, title, startTime, endTime,
   slug: `${slugify(title)}-${date}`,
   title,
   description: DESCRIPTIONS[title],
+  details: DETAILS[title],
   date,
   startTime,
   endTime,

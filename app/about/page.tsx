@@ -45,13 +45,25 @@ export default function AboutPage() {
           </div>
           <div className="prose">
             <p>
-              Tessa leads every Afon Training course.
+              Tess has over 20 years&apos; experience as a Practice Manager,
+              alongside experience in coaching and mentoring.
             </p>
-            {/* Placeholder until Tess supplies her trainer profile:
-                background, experience in primary care, qualifications. */}
-            <p className="placeholder-note">
-              A full trainer profile, covering Tessa&apos;s experience and
-              qualifications, will be added here shortly.
+            <ul className="credentials">
+              <li>TQUK Level 3 Award in Education and Training</li>
+              <li>
+                TQUK Level 3 Instructor in First Aid at Work, including BLS,
+                AED and anaphylaxis
+              </li>
+              <li>ILM Level 3 tutor (Institute of Leadership and Management)</li>
+            </ul>
+            <p>
+              Tess was previously an Associate Trainer at Thornfields, teaching
+              on their ILM Level 3 and Aspiring Practice Manager courses.
+            </p>
+            <p className="trainer-quote">
+              Tess believes quality training is vital to enable, motivate and
+              empower staff to be the best they can be, and in turn to provide
+              the best care and outcomes for patients.
             </p>
           </div>
         </div>
