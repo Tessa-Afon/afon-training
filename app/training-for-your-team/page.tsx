@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
-import { contactHref } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Training for your team · Afon Training" };
 
@@ -45,7 +44,7 @@ export default function TeamTrainingPage() {
             <p>Let us know your organisation, how many people need training and roughly when.</p>
           </div>
           <div className="actions">
-            <a className="btn btn-primary" href={contactHref("Training for our team")}>Email us</a>
+            <Link className="btn btn-primary" href="/contact">Get in touch</Link>
             <Link className="btn btn-secondary" href="/courses">View courses</Link>
           </div>
         </div>
