@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import BrandMark from "@/components/BrandMark";
+import { redirect } from "next/navigation";
+import { IS_LIVE } from "@/lib/site-gate";
 import GateForm from "./GateForm";
 
 export const metadata: Metadata = { title: "Preview access · Afon Training" };
@@ -9,6 +11,7 @@ export default async function GatePage({
 }: {
   searchParams: Promise<{ next?: string }>;
 }) {
+  if (IS_LIVE) redirect("/");
   const { next = "/" } = await searchParams;
 
   return (

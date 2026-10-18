@@ -177,3 +177,29 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 @media (max-width: 720px) {
   .contact-grid { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Forms (contact and booking) */
+.site-form { display: grid; gap: 18px; }
+.site-form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 14px; }
+.site-form legend { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--plum); margin-bottom: 4px; padding: 0; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field-narrow { max-width: 160px; }
+.field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 14px; }
+.field label, .choice label { font-weight: 600; font-size: 0.95rem; }
+.optional { font-weight: 400; color: var(--ink-soft); }
+.field input, .field textarea { font: inherit; width: 100%; padding: 12px 14px; border: 1px solid #C9B8C8; border-radius: 8px; background: var(--white); color: var(--plum); }
+.field textarea { resize: vertical; }
+.field input:focus-visible, .field textarea:focus-visible, .choice input:focus-visible { outline: 3px solid var(--heather); outline-offset: 1px; }
+.choice { display: flex; align-items: flex-start; gap: 10px; }
+.choice input { width: 20px; height: 20px; margin-top: 2px; flex: none; accent-color: var(--plum); }
+.choice label { font-weight: 500; }
+.choice-terms { padding: 14px; background: var(--pale-heather); border-radius: 8px; }
+.form-note { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.form-error { color: #A3304A; font-weight: 500; }
+.form-done { display: grid; gap: 12px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.contact-details { display: grid; gap: 28px; align-content: start; }
+.booking-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(20px, 4vw, 40px); align-items: start; }
+.placeholder-note { color: var(--ink-soft); font-style: italic; }
+@media (max-width: 860px) { .booking-grid { grid-template-columns: 1fr; } }
+.contact-grid .contact-card .site-form, .contact-grid .contact-card .form-done { justify-self: stretch; width: 100%; }

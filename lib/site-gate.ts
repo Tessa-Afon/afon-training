@@ -1,6 +1,9 @@
-// Simple password gate for the testing period. The password lives in the
-// SITE_PASSWORD environment variable; the cookie holds a hash of it, never the
-// password itself, and changing the password signs everyone out.
+// Simple password gate for the dev sandbox and deploy previews. The live
+// site (Netlify production context, i.e. main) is open to everyone. The
+// password lives in the SITE_PASSWORD environment variable; the cookie holds
+// a hash of it, never the password itself, and changing the password signs
+// everyone out.
+export const IS_LIVE = process.env.SITE_DEPLOY_CONTEXT === "production";
 export const GATE_COOKIE = "afon_gate";
 
 export async function gateToken(password: string): Promise<string> {

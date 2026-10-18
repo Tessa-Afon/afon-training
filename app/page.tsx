@@ -34,8 +34,8 @@ export default function Home() {
           </div>
           <p>
             Afon Training provides focused, practical learning delivered in a
-            clear and approachable way. Browse upcoming courses and contact us
-            to reserve your place.
+            clear and approachable way. Browse upcoming courses and book places
+            online.
           </p>
         </div>
       </section>

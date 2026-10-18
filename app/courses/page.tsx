@@ -17,8 +17,8 @@ export default function CoursesPage() {
     <SitePage current="courses">
       <PageHeading title="Upcoming courses">
         <p>
-          Browse forthcoming training courses below. To book a place, select
-          Contact us to book and we will confirm availability and next steps.
+          Browse forthcoming training courses below. Select Book places to
+          reserve places for your team; you can send attendee names later.
         </p>
       </PageHeading>
 

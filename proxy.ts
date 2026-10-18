@@ -1,7 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { GATE_COOKIE, gateToken } from "./lib/site-gate";
+import { GATE_COOKIE, IS_LIVE, gateToken } from "./lib/site-gate";
 
 export async function proxy(request: NextRequest) {
+  if (IS_LIVE) return NextResponse.next();
+
   const password = process.env.SITE_PASSWORD;
 
   // No password configured: open locally, closed everywhere else.
@@ -25,6 +27,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!gate|_next/static|_next/image|favicon.ico|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
+    "/((?!gate|__forms\\.html|_next/static|_next/image|favicon.ico|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
   ],
 };

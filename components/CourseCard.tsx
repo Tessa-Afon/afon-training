@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { type Course, formatDate, formatPrice, formatTimeRange } from "@/lib/courses";
-import { bookingHref } from "@/lib/site";
 
 export function CourseFacts({ course }: { course: Course }) {
   return (
@@ -8,7 +7,7 @@ export function CourseFacts({ course }: { course: Course }) {
       <div><dt>Date</dt><dd>{formatDate(course.date)}</dd></div>
       <div><dt>Time</dt><dd>{formatTimeRange(course)}</dd></div>
       <div><dt>Delivery</dt><dd>{course.delivery}</dd></div>
-      <div><dt>Trainer</dt><dd>{course.trainer}</dd></div>
+      <div><dt>Trainer</dt><dd><Link href="/about#trainer">{course.trainer}</Link></dd></div>
       <div><dt>Price</dt><dd>{formatPrice(course.pricePerPerson)} per person</dd></div>
       <div><dt>Places</dt><dd>Maximum {course.maxAttendees} attendees</dd></div>
     </dl>
@@ -33,7 +32,7 @@ export default function CourseCard({ course }: { course: Course }) {
       <p className="course-description">{course.description}</p>
       <CourseFacts course={course} />
       {bookable && (
-        <a className="btn btn-primary" href={bookingHref(course)}>Contact us to book</a>
+        <Link className="btn btn-primary" href={`/courses/${course.slug}/book`}>Book places</Link>
       )}
     </article>
   );

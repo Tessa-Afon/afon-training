@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import SitePage from "@/components/SitePage";
 import { CourseFacts, CourseStatusBadge } from "@/components/CourseCard";
 import { COURSES, findCourse } from "@/lib/courses";
-import { bookingHref } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -38,7 +37,7 @@ export default async function CoursePage({ params }: Params) {
             <CourseStatusBadge course={course} />
             <CourseFacts course={course} />
             {course.status !== "Fully booked" && (
-              <a className="btn btn-primary" href={bookingHref(course)}>Contact us to book</a>
+              <Link className="btn btn-primary" href={`/courses/${course.slug}/book`}>Book places</Link>
             )}
           </div>
         </div>

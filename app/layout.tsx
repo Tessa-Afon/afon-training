@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { IS_LIVE } from "@/lib/site-gate";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   title: "Afon Training",
   description:
     "Practical training for people working in GP practices, hospitals, care homes and the leisure sector.",
-  robots: { index: false, follow: false },
+  robots: IS_LIVE ? { index: true, follow: true } : { index: false, follow: false },
 };
 
 export default function RootLayout({

@@ -29,8 +29,29 @@ export default function AboutPage() {
               everyone can take part.
             </p>
             <p>
-              We keep booking simple: choose a course, contact us, and we will
-              confirm your place and send you everything you need.
+              We keep booking simple: choose a course, tell us how many places
+              you need, and we will confirm and send an invoice. Attendee names
+              can follow later.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="band" id="trainer">
+        <div className="wrap intro">
+          <div>
+            <p className="eyebrow">Your trainer</p>
+            <h2>Tessa Clarke</h2>
+          </div>
+          <div className="prose">
+            <p>
+              Tessa leads every Afon Training course.
+            </p>
+            {/* Placeholder until Tess supplies her trainer profile:
+                background, experience in primary care, qualifications. */}
+            <p className="placeholder-note">
+              A full trainer profile, covering Tessa&apos;s experience and
+              qualifications, will be added here shortly.
             </p>
           </div>
         </div>

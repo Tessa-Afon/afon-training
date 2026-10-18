@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
+import { IS_LIVE } from "@/lib/site-gate";
 
-// Preview site: keep it out of search engines until launch.
+// Only the live site is indexed; the dev sandbox and previews stay hidden.
 export default function robots(): MetadataRoute.Robots {
-  return { rules: { userAgent: "*", disallow: "/" } };
+  return IS_LIVE
+    ? { rules: { userAgent: "*", allow: "/" } }
+    : { rules: { userAgent: "*", disallow: "/" } };
 }

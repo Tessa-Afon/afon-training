@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+  Netlify Forms skeleton. Never shown to visitors: Netlify reads it at
+  deploy time to learn each form's name and fields. Keep every field name
+  in step with components/ContactForm.tsx and components/BookingForm.tsx,
+  or those fields are silently dropped.
+-->
+<html lang="en-GB">
+  <head><meta charset="utf-8"><title>Forms</title></head>
+  <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact">
+      <input name="bot-field">
+      <input name="name">
+      <input name="email" type="email">
+      <input name="phone">
+      <input name="organisation">
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="booking" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="booking">
+      <input name="bot-field">
+      <input name="course">
+      <input name="course-date">
+      <input name="course-time">
+      <input name="price-per-person">
+      <input name="payment-due">
+      <input name="places" type="number">
+      <input name="estimated-total">
+      <input name="contact-name">
+      <input name="organisation">
+      <input name="email" type="email">
+      <input name="phone">
+      <textarea name="invoice-address"></textarea>
+      <input name="invoice-email" type="email">
+      <input name="po-number">
+      <input name="attendees-known">
+      <textarea name="attendees"></textarea>
+      <textarea name="notes"></textarea>
+      <input name="payment-terms" type="checkbox">
+    </form>
+  </body>
+</html>
