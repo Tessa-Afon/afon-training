@@ -7,13 +7,18 @@ This document keeps the full, aspirational scope. We are building in small steps
 
 ## Current phase
 
-1. Homepage design for approval of colours, fonts and layout (see `docs/THEME_DESIGN.md`).
-2. Then two simple pages:
-   - **Landing page**
-   - **Courses page**: course name, date, time, cost per person and a "Contact us to book" button.
-3. Hosted live at `controlnow.co.uk` behind a simple password gate so Tess can review it. Custom domain once the name is final.
+Built (October 2026):
 
-Nothing beyond this is built until the design is approved.
+- Home, Courses, Course detail, Training for your team, About, Contact, Privacy.
+- **Book places** form per course: places, booking contact, invoice details,
+  attendee names now or later, payment due 6 weeks before the course.
+  Submissions via Netlify Forms, emailed to bookings@afontraining.co.uk.
+- Contact form, email and telephone on the Contact page.
+- Trainer section on About (placeholder until Tess's profile arrives).
+- Live at `afontraining.co.uk` (branch `main`); password-protected sandbox
+  on the `dev` branch.
+
+Next: online booking with place counts, then online payment.
 
 ### Planned site map
 
@@ -27,7 +32,7 @@ Afon Training
 └── Contact
 ```
 
-### Booking enquiry email (for "Contact us to book")
+### Booking enquiry email (superseded by the Book places form)
 
 Subject: `Course booking enquiry: [Course name] — [Course date]`
 
