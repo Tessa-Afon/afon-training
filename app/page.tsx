@@ -2,21 +2,16 @@ import Link from "next/link";
 import SitePage from "@/components/SitePage";
 import FlowLines from "@/components/FlowLines";
 import ContactPrompt from "@/components/ContactPrompt";
-import { upcomingCourses } from "@/lib/courses";
+import { formatDate, upcomingCourses } from "@/lib/courses";
 
 // Rebuild hourly so past courses drop off without a redeploy.
 export const revalidate = 3600;
 
-/** The next few courses, one per title. */
-function nextCourses(limit = 3) {
-  const seen = new Set<string>();
-  return upcomingCourses().filter((c) => !seen.has(c.title) && seen.add(c.title)).slice(0, limit);
-}
 
 const SECTORS = ["GP practices", "Hospitals", "Care homes", "Leisure sector"];
 
 export default function Home() {
-  const next = nextCourses();
+  const next = upcomingCourses().slice(0, 3);
 
   return (
     <SitePage current="home">
@@ -60,6 +55,7 @@ export default function Home() {
             <ul className="upcoming-list">
               {next.map((c) => (
                 <li key={c.slug}>
+                  <p className="upcoming-date">{formatDate(c.date)}</p>
                   <h3><Link href={`/courses/${c.slug}`}>{c.title}</Link></h3>
                   <p>{c.description}</p>
                 </li>
