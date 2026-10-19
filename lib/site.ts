@@ -1,6 +1,9 @@
-// Contact address for enquiries and bookings (an alias on Tess's Zoho
-// mailbox).
-export const CONTACT_EMAIL = "bookings@afontraining.co.uk";
+// Aliases on Tess's Zoho mailbox: info@ for general enquiries, bookings@
+// for anything about a booking.
+export const CONTACT_EMAIL = "info@afontraining.co.uk";
+export const BOOKINGS_EMAIL = "bookings@afontraining.co.uk";
+
+export const POSTAL_ADDRESS = "6a South Street, Castlethorpe, MK19 7EL";
 
 export const CONTACT_PHONE = "07773 413025";
 export const CONTACT_PHONE_HREF = "tel:+447773413025";

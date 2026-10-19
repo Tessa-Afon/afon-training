@@ -60,9 +60,9 @@ const DESCRIPTIONS: Record<string, string> = {
 
 const DETAILS: Record<string, CourseDetails> = {
   "Medical Record Summarising for GP Practices": {
-    subtitle: "A practical, interactive workshop for Primary Care staff",
+    subtitle: "A practical, interactive course for primary care staff",
     intro: [
-      "This workshop is designed for staff responsible for medical record summarising in general practice. Through practical examples and discussion, delegates will explore the purpose of summarising and work through a suggested step-by-step approach to reviewing the records of newly registered patients.",
+      "This course is designed for staff responsible for medical record summarising in general practice. Through practical examples and discussion, attendees will explore the purpose of summarising and work through a suggested step-by-step approach to reviewing the records of newly registered patients.",
       "The session will also explore how relevant information from incoming clinical correspondence contributes to an accurate, up-to-date patient record, with an emphasis on working within agreed practice procedures and recognising when clinical clarification is needed.",
     ],
     includes: "Certificate of attendance and electronic workbook included.",
@@ -91,7 +91,7 @@ const DETAILS: Record<string, CourseDetails> = {
       "Describe how their work should be checked and supported within the practice.",
     ],
     beforeAttending:
-      "Delegates should have a working knowledge of medical terminology, experience of navigating their practice's clinical system and familiarity with the clinical coding terminology used in their setting. This should include familiarity with SNOMED CT. Read/CTV3 knowledge may be useful for understanding historical records but is not essential.",
+      "Attendees should have a working knowledge of medical terminology, experience of navigating their practice's clinical system and familiarity with the clinical coding terminology used in their setting. This should include familiarity with SNOMED CT. Read/CTV3 knowledge may be useful for understanding historical records but is not essential.",
   },
 };
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
-import { CONTACT_EMAIL } from "@/lib/site";
+import { CONTACT_EMAIL, POSTAL_ADDRESS } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Privacy · Afon Training" };
 
@@ -13,6 +13,13 @@ export default function PrivacyPage() {
       <PageHeading title="Privacy notice" />
       <section className="band band-tight">
         <div className="wrap prose">
+          <h2>Who we are</h2>
+          <p>
+            Afon Training is run by Tessa Clarke, who is responsible for the
+            personal information described here. You can write to us at{" "}
+            {POSTAL_ADDRESS}, or email{" "}
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+          </p>
           <h2>What we collect</h2>
           <p>
             If you use our contact form, we receive your name, email address,
@@ -37,8 +44,13 @@ export default function PrivacyPage() {
           <p>
             We use those details only to answer your enquiry, to arrange and
             invoice any booking you make, and to send joining details to
-            attendees. We do not sell or share your
-            details for marketing.
+            attendees. We do not sell or share your details for marketing.
+          </p>
+          <h2>How long we keep it</h2>
+          <p>
+            We keep enquiries for up to 12 months after our last contact with
+            you. We keep booking and invoice records for 6 years, as required
+            for tax and accounting purposes, and then delete them.
           </p>
           <h2>Cookies</h2>
           <p>
@@ -50,7 +62,11 @@ export default function PrivacyPage() {
           <h2>Your rights</h2>
           <p>
             You can ask to see, correct or delete the information we hold
-            about you by emailing {CONTACT_EMAIL}.
+            about you by emailing{" "}
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. If you are
+            unhappy with how we have handled your information, you can complain
+            to the Information Commissioner&apos;s Office at{" "}
+            <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener noreferrer">ico.org.uk</a>.
           </p>
         </div>
       </section>

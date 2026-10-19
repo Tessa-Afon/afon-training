@@ -11,9 +11,9 @@ export default function AboutPage() {
     <SitePage current="about">
       <PageHeading title="About Afon Training">
         <p>
-          Afon Training provides focused, practical learning delivered in a
-          clear and approachable way, for people working in GP practices,
-          hospitals, care homes and the leisure sector.
+          Practical courses for people working in GP practices, hospitals,
+          care homes and the leisure sector, led by a trainer who has done the
+          job.
         </p>
       </PageHeading>
 
@@ -21,13 +21,13 @@ export default function AboutPage() {
         <div className="wrap intro">
           <div>
             <p className="eyebrow">Our approach</p>
-            <h2>Training that fits real working life</h2>
+            <h2>How we train</h2>
           </div>
           <div className="prose">
             <p>
               Our courses are built around the situations people meet at work.
-              Sessions are practical, clearly explained and sized so that
-              everyone can take part.
+              Sessions run live on Microsoft Teams, are practical and clearly
+              explained, and are kept small so that everyone can take part.
             </p>
             <p>
               We keep booking simple: choose a course, tell us how many places

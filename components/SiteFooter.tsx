@@ -6,11 +6,14 @@ export default function SiteFooter() {
       <div className="wrap">
         <div>
           <Link className="brand" href="/">Afon Training</Link>
-          <p>Practical training for professional teams.</p>
+          <p>Practical training for confident teams.</p>
         </div>
         <nav className="footer-links" aria-label="Footer">
           <Link href="/courses">Courses</Link>
-          <Link href="/contact">Contact us</Link>
+          <Link href="/about">About</Link>
+          <Link href="/join-the-team">Join the team</Link>
+          <Link href="/contact">Contact</Link>
+          <Link href="/booking-terms">Booking terms</Link>
           <Link href="/privacy">Privacy</Link>
         </nav>
       </div>

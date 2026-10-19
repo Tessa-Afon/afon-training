@@ -54,10 +54,10 @@ export default async function CoursePage({ params }: Params) {
               {d.includes && <p className="course-includes">{d.includes}</p>}
               <h2>Who should attend?</h2>
               <ul>{d.whoShouldAttend.map((x) => <li key={x}>{x}</li>)}</ul>
-              <h2>What will the workshop cover?</h2>
+              <h2>What will the course cover?</h2>
               <ul>{d.covers.map((x) => <li key={x}>{x}</li>)}</ul>
               <h2>Learning outcomes</h2>
-              <p>By the end of the workshop, delegates should be able to:</p>
+              <p>By the end of the course, attendees should be able to:</p>
               <ul>{d.outcomes.map((x) => <li key={x}>{x}</li>)}</ul>
               {d.beforeAttending && (
                 <>

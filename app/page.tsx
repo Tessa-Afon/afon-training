@@ -2,10 +2,22 @@ import Link from "next/link";
 import SitePage from "@/components/SitePage";
 import FlowLines from "@/components/FlowLines";
 import ContactPrompt from "@/components/ContactPrompt";
+import { upcomingCourses } from "@/lib/courses";
+
+// Rebuild hourly so past courses drop off without a redeploy.
+export const revalidate = 3600;
+
+/** The next few courses, one per title. */
+function nextCourses(limit = 3) {
+  const seen = new Set<string>();
+  return upcomingCourses().filter((c) => !seen.has(c.title) && seen.add(c.title)).slice(0, limit);
+}
 
 const SECTORS = ["GP practices", "Hospitals", "Care homes", "Leisure sector"];
 
 export default function Home() {
+  const next = nextCourses();
+
   return (
     <SitePage current="home">
       <section className="hero">
@@ -13,8 +25,9 @@ export default function Home() {
         <div className="wrap">
           <h1>Practical training for confident teams</h1>
           <p className="lede">
-            Clear, relevant courses for people working in GP practices,
-            hospitals, care homes and the leisure sector.
+            Clear, relevant courses, delivered live online via Microsoft Teams,
+            for people working in GP practices, hospitals, care homes and the
+            leisure sector.
           </p>
           <div className="actions">
             <Link className="btn btn-primary" href="/courses">View courses</Link>
@@ -34,19 +47,28 @@ export default function Home() {
           </div>
           <p>
             Afon Training provides focused, practical learning delivered in a
-            clear and approachable way. Browse upcoming courses and book places
-            online.
+            clear and approachable way. Your team joins from work, with no
+            travel. Browse upcoming courses and book places online.
           </p>
         </div>
       </section>
 
       <section className="band band-heather">
-        <div className="wrap prompt">
-          <div>
-            <h2>Upcoming courses</h2>
-            <p>View course dates, times and prices on our courses page.</p>
-          </div>
-          <Link className="btn btn-primary" href="/courses">View courses</Link>
+        <div className="wrap upcoming">
+          <h2>Upcoming courses</h2>
+          {next.length > 0 ? (
+            <ul className="upcoming-list">
+              {next.map((c) => (
+                <li key={c.slug}>
+                  <h3><Link href={`/courses/${c.slug}`}>{c.title}</Link></h3>
+                  <p>{c.description}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>New course dates are coming soon.</p>
+          )}
+          <Link className="btn btn-primary" href="/courses">See all courses and dates</Link>
         </div>
       </section>
 

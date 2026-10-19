@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { submitNetlifyForm } from "@/lib/forms";
-import { CONTACT_EMAIL } from "@/lib/site";
+import Link from "next/link";
+import { BOOKINGS_EMAIL } from "@/lib/site";
 
 export type BookingCourse = {
   title: string;
@@ -47,7 +48,7 @@ export default function BookingForm({ course }: { course: BookingCourse }) {
         {!namesNow && (
           <p>
             You can send attendee names to{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> whenever you have them.
+            <a href={`mailto:${BOOKINGS_EMAIL}`}>{BOOKINGS_EMAIL}</a> whenever you have them.
           </p>
         )}
       </div>
@@ -170,13 +171,16 @@ export default function BookingForm({ course }: { course: BookingCourse }) {
 
       <div className="choice choice-terms">
         <input id="b-terms" type="checkbox" name="payment-terms" value="Accepted" required />
-        <label htmlFor="b-terms">I understand that payment is due {paymentDue}.</label>
+        <label htmlFor="b-terms">
+          I accept the <Link href="/booking-terms" target="_blank">booking terms</Link> and understand
+          that payment is due {paymentDue}.
+        </label>
       </div>
 
       {status === "error" && (
         <p className="form-error" role="alert">
           Sorry, your booking could not be sent. Please try again, or email us at{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+          <a href={`mailto:${BOOKINGS_EMAIL}`}>{BOOKINGS_EMAIL}</a>.
         </p>
       )}
       <button className="btn btn-primary" type="submit" disabled={status === "sending"}>
