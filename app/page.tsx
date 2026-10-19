@@ -50,7 +50,10 @@ export default function Home() {
 
       <section className="band band-heather">
         <div className="wrap upcoming">
-          <h2>Upcoming courses</h2>
+          <div className="upcoming-head">
+            <h2>Upcoming courses</h2>
+            <span className="booking-tag">All courses booking now</span>
+          </div>
           {next.length > 0 ? (
             <ul className="upcoming-list">
               {next.map((c) => (
