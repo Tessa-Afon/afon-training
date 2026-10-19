@@ -7,7 +7,6 @@ export function CourseFacts({ course }: { course: Course }) {
       <div><dt>Date</dt><dd>{formatDate(course.date)}</dd></div>
       <div><dt>Time</dt><dd>{formatTimeRange(course)}</dd></div>
       <div><dt>Delivery</dt><dd>{course.delivery}</dd></div>
-      <div><dt>Trainer</dt><dd><Link href="/about#trainer">{course.trainer}</Link></dd></div>
       <div><dt>Price</dt><dd>{formatPrice(course.pricePerPerson)} per person</dd></div>
       <div><dt>Places</dt><dd>Maximum {course.maxAttendees} attendees</dd></div>
     </dl>
