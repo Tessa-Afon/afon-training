@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import BrandMark from "./BrandMark";
 
 export type NavKey = "home" | "courses" | "team" | "about" | "join" | "contact";
@@ -13,6 +16,15 @@ const LINKS: { key: NavKey; href: string; label: string }[] = [
 ];
 
 export default function SiteHeader({ current }: { current?: NavKey }) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <header className="site-header">
       <div className="wrap">
@@ -20,9 +32,19 @@ export default function SiteHeader({ current }: { current?: NavKey }) {
           <BrandMark />
           Afon Training
         </Link>
-        <nav className="nav" aria-label="Main">
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-expanded={open}
+          aria-controls="main-nav"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span aria-hidden="true" />
+        </button>
+        <nav id="main-nav" className={open ? "nav nav-open" : "nav"} aria-label="Main">
           {LINKS.map((l) => (
-            <Link key={l.key} href={l.href} aria-current={current === l.key ? "page" : undefined}>
+            <Link key={l.key} href={l.href} aria-current={current === l.key ? "page" : undefined} onClick={() => setOpen(false)}>
               {l.label}
             </Link>
           ))}
