@@ -3,7 +3,7 @@ import Link from "next/link";
 import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
 
-export const metadata: Metadata = { title: "Training for your team · Afon Training" };
+export const metadata: Metadata = { title: "Bespoke training · Afon Training" };
 
 const SECTORS = [
   { name: "GP practices", text: "Training for clinical and non-clinical practice staff." },
@@ -12,14 +12,15 @@ const SECTORS = [
   { name: "Leisure sector", text: "Training for staff working with the public in leisure settings." },
 ];
 
-export default function TeamTrainingPage() {
+export default function BespokeTrainingPage() {
   return (
-    <SitePage current="team">
-      <PageHeading title="Training for your team">
+    <SitePage current="bespoke">
+      <PageHeading title="Bespoke training">
         <p>
-          We can run courses for your organisation, at a date and place that
-          suits your team. Tell us what you need and we will talk it through
-          with you.
+          We can run any of our courses privately for your organisation, at
+          your premises or online, on a date that suits you. We can also adapt
+          the content to your setting and your staff. Tell us what you need and
+          we will talk it through with you.
         </p>
       </PageHeading>
 
@@ -40,8 +41,8 @@ export default function TeamTrainingPage() {
       <section className="band band-heather">
         <div className="wrap prompt">
           <div>
-            <h2>Talk to us about your team</h2>
-            <p>Let us know your organisation, how many people need training and roughly when.</p>
+            <h2>Plan training for your organisation</h2>
+            <p>Let us know your organisation, how many people need training, whether you&apos;d like it onsite or online, and roughly when.</p>
           </div>
           <div className="actions">
             <Link className="btn btn-primary" href="/contact">Get in touch</Link>

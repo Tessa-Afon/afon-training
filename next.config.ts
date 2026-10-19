@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
     // Inlined so the password gate and robots rules can depend on it.
     SITE_DEPLOY_CONTEXT: process.env.CONTEXT ?? "",
   },
+  async redirects() {
+    // The page was renamed from "Training for your team" in October 2026.
+    return [
+      { source: "/training-for-your-team", destination: "/bespoke-training", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

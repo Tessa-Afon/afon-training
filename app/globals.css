@@ -193,7 +193,7 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 .empty-state h2 { font-size: 1.5rem; }
 .empty-state p { color: var(--ink-soft); max-width: 55ch; }
 
-/* Training for your team */
+/* Bespoke training */
 .upcoming { display: grid; gap: 24px; justify-items: start; }
 .upcoming-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px 32px; width: 100%; }
 .upcoming-list li { display: grid; gap: 6px; align-content: start; padding-top: 14px; border-top: 2px solid var(--marigold); }

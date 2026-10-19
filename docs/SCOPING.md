@@ -9,7 +9,7 @@ This document keeps the full, aspirational scope. We are building in small steps
 
 Built (October 2026):
 
-- Home, Courses, Course detail, Training for your team, About, Contact, Privacy.
+- Home, Courses, Course detail, Bespoke training, About, Contact, Privacy.
 - **Book places** form per course: places, booking contact, invoice details,
   attendee names now or later, payment due 6 weeks before the course.
   Submissions via Netlify Forms, emailed to bookings@afontraining.co.uk.
@@ -27,7 +27,7 @@ Afon Training
 ├── Home
 ├── Courses
 │   └── Course detail / booking enquiry
-├── Training for your team
+├── Bespoke training
 ├── About
 └── Contact
 ```

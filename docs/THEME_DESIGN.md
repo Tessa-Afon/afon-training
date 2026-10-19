@@ -29,7 +29,7 @@ Implement these as reusable theme tokens:
 
 ## Interface priorities
 
-- **Primary actions:** “Find a course” and “Training for your team”.
+- **Primary actions:** “Find a course” and “Bespoke training”.
 - **Course cards:** Clearly distinguish title, intended audience, delivery format, date and booking action.
 - **Consistency:** Use one shared theme across public pages, booking forms and the learner hub.
 - **Accessibility:** Include visible keyboard focus, explicit form labels and states that do not rely on colour alone.

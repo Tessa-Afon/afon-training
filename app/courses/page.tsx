@@ -42,8 +42,8 @@ export default function CoursesPage() {
               <h2>New course dates coming soon</h2>
               <p>
                 We are preparing our upcoming programme. Please contact us if
-                you would like to register your interest or discuss training
-                for your team.
+                you would like to register your interest or discuss bespoke
+                training for your organisation.
               </p>
               <Link className="btn btn-primary" href="/contact">Contact us</Link>
             </div>

@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import BrandMark from "./BrandMark";
 
-export type NavKey = "home" | "courses" | "team" | "about" | "join" | "contact";
+export type NavKey = "home" | "courses" | "bespoke" | "about" | "join" | "contact";
 
 const LINKS: { key: NavKey; href: string; label: string }[] = [
   { key: "home", href: "/", label: "Home" },
   { key: "courses", href: "/courses", label: "Courses" },
-  { key: "team", href: "/training-for-your-team", label: "Training for your team" },
+  { key: "bespoke", href: "/bespoke-training", label: "Bespoke training" },
   { key: "about", href: "/about", label: "About" },
   { key: "join", href: "/join-the-team", label: "Join the team" },
   { key: "contact", href: "/contact", label: "Contact" },
