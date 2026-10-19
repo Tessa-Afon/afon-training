@@ -85,6 +85,8 @@ a:focus-visible, .btn:focus-visible { outline: 3px solid var(--heather); outline
 
 /* Sections */
 section.band { padding-block: clamp(56px, 8vw, 96px); }
+section.band-white { padding-block: clamp(28px, 4vw, 44px); }
+.band-white .intro { align-items: center; }
 .band-white { background: rgba(255, 255, 255, .85); border-block: 1px solid var(--line); }
 .band-heather { background: rgba(233, 221, 235, .88); }
 .eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--heather); margin-bottom: 12px; }
