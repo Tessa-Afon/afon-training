@@ -1,8 +1,12 @@
-import Script from "next/script";
+"use client";
+
+import { useEffect } from "react";
+
+const WIDGET_SRC = "https://procourses.co.uk/javascripts/widgets.js?v=20230502";
 
 // ProTrainings Approved Centre badge and course video widget, from the
 // embed code ProTrainings supplied (centre 91719, facilitator 12222,
-// course 303). The widget script fills the .pt-video placeholder.
+// course 303).
 export function ProTrainingsBadge() {
   return (
     <a
@@ -21,11 +25,19 @@ export function ProTrainingsBadge() {
   );
 }
 
+// The widget script scans for .pt-video placeholders once, when it runs,
+// and has no init function to call again. next/script only runs a given
+// src once per visit, so after client-side navigation back to this page the
+// placeholder stayed empty. Adding a fresh script tag on every mount makes it
+// scan again; it marks filled placeholders with data-loaded, so no doubles.
 export function ProTrainingsVideo() {
-  return (
-    <>
-      <div className="pt-video" data-width="465" data-facilitator-id="12222" data-course-id="303" />
-      <Script src="https://procourses.co.uk/javascripts/widgets.js?v=20230502" strategy="lazyOnload" />
-    </>
-  );
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = WIDGET_SRC;
+    script.async = true;
+    document.body.appendChild(script);
+    return () => script.remove();
+  }, []);
+
+  return <div className="pt-video" data-width="465" data-facilitator-id="12222" data-course-id="303" />;
 }
