@@ -47,7 +47,7 @@ const DESCRIPTIONS: Record<string, string> = {
   "Handling Abusive Patients and Conflict Resolution":
     "Practical techniques for responding calmly, setting boundaries and managing challenging behaviour safely.",
   "Chaperone Training":
-    "Understand the chaperone role, professional boundaries, safeguarding and good practice in healthcare settings.",
+    "Develop the knowledge and confidence to understand the chaperone role, support patients during sensitive examinations and recognise when to speak up or seek help.",
   "Medical Terminology for Non-Clinical Staff":
     "Learn the common terms, abbreviations and language used in healthcare to support confident communication and administration.",
   "Excellent Customer Service and Improving the Patient Experience":
@@ -92,6 +92,44 @@ const DETAILS: Record<string, CourseDetails> = {
     ],
     beforeAttending:
       "Attendees should have a working knowledge of medical terminology, experience of navigating their practice's clinical system and familiarity with the clinical coding terminology used in their setting. This should include familiarity with SNOMED CT. Read/CTV3 knowledge may be useful for understanding historical records but is not essential.",
+  },
+  "Chaperone Training": {
+    subtitle: "A practical, interactive course for Clinical and Non-Clinical staff",
+    intro: [
+      "This course is designed for clinical and non-clinical staff who may act as formal chaperones. It is also relevant to staff who explain chaperone services to patients or help organise their availability.",
+      "This interactive course explores current national guidance for chaperoning, with a focus on patient dignity, consent, confidentiality, safeguarding and clear professional boundaries. These are central elements of CQC and GMC guidance.",
+    ],
+    includes: "Certificate of attendance and electronic workbook included.",
+    whoShouldAttend: [
+      "Reception, administrative and other non-clinical staff identified to undertake formal chaperone duties.",
+      "Existing chaperones seeking a refresher.",
+      "Clinical staff who undertake or support examinations where a chaperone may be appropriate.",
+      "Staff responsible for explaining the service to patients or coordinating chaperone arrangements.",
+    ],
+    covers: [
+      "What a formal chaperone is and why the role matters.",
+      "The responsibilities and boundaries of the role.",
+      "Recognising when a chaperone should be offered.",
+      "What is meant by an intimate examination.",
+      "Communicating chaperone services and offering chaperones sensitively.",
+      "Understanding how to respond to concerns about patient safety or a clinician's behaviour.",
+      "Be aware of the rights of the patient.",
+      "Maintaining dignity, privacy and confidentiality.",
+      "Understanding the examination sufficiently to undertake the role.",
+      "Recognising distress, discomfort or concerns.",
+      "Professional behaviour and speaking up appropriately.",
+      "Record keeping as a chaperone.",
+    ],
+    outcomes: [
+      "Define the role and purpose of a formal chaperone.",
+      "Recognise intimate examinations and other situations in which a chaperone may be appropriate.",
+      "Explain chaperone services clearly and sensitively to patients.",
+      "Describe patients' rights relating to dignity, privacy, consent and stopping an examination.",
+      "Describe a chaperone's responsibilities before, during and after an examination.",
+      "Explain appropriate positioning, observation and support during an examination.",
+      "Recognise distress or concerning behaviour and describe how to raise concerns.",
+      "Identify the documentation required under their practice's procedures.",
+    ],
   },
 };
 
