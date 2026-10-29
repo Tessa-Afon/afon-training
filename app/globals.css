@@ -192,7 +192,14 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 .course-card > .btn { text-align: center; line-height: 1.3; }
 .course-card-frame { display: grid; place-items: center; aspect-ratio: 3 / 2; margin-inline: calc(-1 * clamp(20px, 3vw, 26px)); background: url("/card-wave.svg") center / 100% 100% no-repeat, var(--pale-heather); }
 .course-card-frame img { display: block; height: auto; }
-.course-card-photo { width: 72%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 8px; border: 4px solid var(--white); box-shadow: 0 6px 18px rgba(59, 31, 69, .18); }
+/* Photo edges fade softly into the purple panel. */
+.course-card-photo {
+  width: 72%; aspect-ratio: 3 / 2; object-fit: cover;
+  --fade-x: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  --fade-y: linear-gradient(to bottom, transparent, #000 9%, #000 91%, transparent);
+  -webkit-mask-image: var(--fade-x), var(--fade-y); -webkit-mask-composite: source-in;
+  mask-image: var(--fade-x), var(--fade-y); mask-composite: intersect;
+}
 .course-card-icon { width: 60%; aspect-ratio: 3 / 2; }
 .course-note { font-size: 0.95rem; font-style: italic; color: var(--plum); }
 .course-card .course-facts div { grid-template-columns: 6.5em minmax(0, 1fr); }
