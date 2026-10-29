@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { type Course, formatDate, formatPrice, formatTimeRange } from "@/lib/courses";
+import { type Course, type CourseImage, formatDate, formatPrice, formatTimeRange } from "@/lib/courses";
 
 export function CourseFacts({ course }: { course: Course }) {
   return (
@@ -18,10 +18,19 @@ export function CourseStatusBadge({ course }: { course: Course }) {
   return <p className={`course-status course-status-${tone}`}>{course.status}</p>;
 }
 
+// Image header shared by every course card on the site.
+export function CourseCardImage({ image }: { image: CourseImage }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element -- mix of SVG placeholders and photos
+    <img className="course-card-photo" src={image.src} alt={image.alt} width={600} height={400} />
+  );
+}
+
 export default function CourseCard({ course }: { course: Course }) {
   const bookable = course.status !== "Fully booked";
   return (
     <article className="course-card">
+      <CourseCardImage image={course.image} />
       <div className="course-card-head">
         <h3>
           <Link href={`/courses/${course.slug}`}>{course.title}</Link>

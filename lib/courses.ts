@@ -14,8 +14,13 @@ export type Course = {
   trainer: string;
   maxAttendees: number;
   status: CourseStatus;
+  image: CourseImage;
   details?: CourseDetails;
 };
+
+// Card header image. Placeholder illustrations in public/courses/ until Tess
+// supplies photos.
+export type CourseImage = { src: string; alt: string };
 
 // Full course information, shown on the course page. Optional: courses
 // without it show just their one-line description.
@@ -156,11 +161,23 @@ function slugify(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
+const IMAGES: Record<string, CourseImage> = {
+  "Improving the Patient Experience": { src: "/courses/patient-experience.svg", alt: "Speech bubble with smile" },
+  "Medical Record Summarising for GP Practices": { src: "/courses/record-summarising.svg", alt: "Patient record with magnifying glass" },
+  "Handling Abusive Patients and Conflict Resolution": { src: "/courses/conflict-resolution.svg", alt: "Two speech bubbles" },
+  "Chaperone Training": { src: "/courses/chaperone.svg", alt: "Two people" },
+  "Medical Terminology for Non-Clinical Staff": { src: "/courses/medical-terminology.svg", alt: "Open book" },
+  "Excellent Customer Service and Improving the Patient Experience": { src: "/courses/customer-service.svg", alt: "Star" },
+  "Mental Health Awareness": { src: "/courses/mental-health.svg", alt: "Head with a heart" },
+  "Preparing for a CQC Inspection": { src: "/courses/cqc-inspection.svg", alt: "Clipboard with a tick" },
+};
+
 export const COURSES: Course[] = SCHEDULE.map(([date, title, startTime, endTime, pricePerPerson]) => ({
   ...DEFAULTS,
   slug: `${slugify(title)}-${date}`,
   title,
   description: DESCRIPTIONS[title],
+  image: IMAGES[title],
   details: DETAILS[title],
   date,
   startTime,
