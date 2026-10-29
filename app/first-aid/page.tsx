@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
-import { CourseCardImage } from "@/components/CourseCard";
 import { ProTrainingsBadge, ProTrainingsVideo, TqukWidget } from "@/components/ProTrainings";
 import { FIRST_AID_COURSES, type FirstAidCourse } from "@/lib/firstAid";
 
@@ -16,8 +15,9 @@ function FirstAidCard({ course }: { course: FirstAidCourse }) {
   ].filter((f): f is [string, string] => Boolean(f[1]));
 
   return (
-    <article className="course-card" id={course.slug}>
-      <CourseCardImage image={course.image} />
+    <article className="course-card course-card-image" id={course.slug}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- placeholder SVGs, swapped for photos later */}
+      <img className="course-card-photo" src={course.image} alt={course.imageAlt} width={600} height={400} />
       <h3>{course.title}</h3>
       {course.description.map((p) => <p key={p} className="course-description">{p}</p>)}
       {course.note && <p className="course-note">{course.note}</p>}
