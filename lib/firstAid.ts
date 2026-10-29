@@ -1,13 +1,9 @@
 // First aid and BLS courses, from Tess's list (October 2026). These are not
 // dated or booked online: each card asks people to contact us instead.
-// Images are generic placeholders in public/first-aid/ until Tess supplies
-// photos; swap the file and update `image` to change one.
 
 export type FirstAidCourse = {
   slug: string;
   title: string;
-  image: string;
-  imageAlt: string;
   description: string[];
   duration?: string;
   delivery?: string;
@@ -21,8 +17,6 @@ export const FIRST_AID_COURSES: FirstAidCourse[] = [
   {
     slug: "first-aid-at-work",
     title: "TQUK Level 3 First Aid at Work",
-    image: "/first-aid/first-aid-at-work.svg",
-    imageAlt: "First aid kit",
     description: [
       "Become a fully trained First Aider for your workplace. Learn how to handle a variety of workplace incidents including choking, bleeding, burns and administering CPR.",
     ],
@@ -33,8 +27,6 @@ export const FIRST_AID_COURSES: FirstAidCourse[] = [
   {
     slug: "first-aid-at-work-requalification",
     title: "TQUK Level 3 First Aid at Work Requalification",
-    image: "/first-aid/first-aid-at-work-requalification.svg",
-    imageAlt: "First aid kit with refresh arrow",
     description: [
       "The course is designed as an annual first aid refresher to keep your Level 3 qualification up to date through the 3 year period.",
     ],
@@ -45,8 +37,6 @@ export const FIRST_AID_COURSES: FirstAidCourse[] = [
   {
     slug: "emergency-first-aid-at-work",
     title: "Emergency First Aid at Work & First Aid at Work Refresher",
-    image: "/first-aid/emergency-first-aid-at-work.svg",
-    imageAlt: "Heart with heartbeat line",
     description: [
       "This Emergency First Aid at Work course is designed to learn the essentials of first aid and CPR.",
       "The course can also be used as an annual first aid refresher to keep your Level 3 qualification up to date through the 3 year period.",
@@ -58,8 +48,6 @@ export const FIRST_AID_COURSES: FirstAidCourse[] = [
   {
     slug: "basic-life-support-aed",
     title: "Basic Life Support & AED for Healthcare Professionals",
-    image: "/first-aid/basic-life-support-aed.svg",
-    imageAlt: "Defibrillator",
     description: [
       "Learn the essential skills and knowledge to perform CPR and use an Automated External Defibrillator.",
     ],
@@ -71,8 +59,6 @@ export const FIRST_AID_COURSES: FirstAidCourse[] = [
   {
     slug: "anaphylaxis-awareness",
     title: "Anaphylaxis Awareness",
-    image: "/first-aid/anaphylaxis-awareness.svg",
-    imageAlt: "Adrenaline auto-injector",
     description: [
       "Recognise and respond to allergic reactions. Common triggers, signs of anaphylaxis, preventing exposure, use of adrenaline auto-injectors.",
       "This course can also cover administering adrenaline in a health care setting for clinical staff. Needle lengths, dosages and use of oxygen.",
@@ -82,8 +68,6 @@ export const FIRST_AID_COURSES: FirstAidCourse[] = [
   {
     slug: "care-certificate",
     title: "Care Certificate (VTQ) Qualification",
-    image: "/first-aid/care-certificate.svg",
-    imageAlt: "Certificate",
     description: [
       "This course focuses on the theoretical aspects of the Care Certificate. It is designed to work alongside practical skills learnt in the workplace.",
       "Covering the 16 standards required, learning is done through e-learning with a training portfolio and tracking document provided to track progress and understanding.",

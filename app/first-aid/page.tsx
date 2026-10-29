@@ -15,9 +15,7 @@ function FirstAidCard({ course }: { course: FirstAidCourse }) {
   ].filter((f): f is [string, string] => Boolean(f[1]));
 
   return (
-    <article className="course-card course-card-image" id={course.slug}>
-      {/* eslint-disable-next-line @next/next/no-img-element -- placeholder SVGs, swapped for photos later */}
-      <img className="course-card-photo" src={course.image} alt={course.imageAlt} width={600} height={400} />
+    <article className="course-card" id={course.slug}>
       <h3>{course.title}</h3>
       {course.description.map((p) => <p key={p} className="course-description">{p}</p>)}
       {course.note && <p className="course-note">{course.note}</p>}
@@ -26,7 +24,7 @@ function FirstAidCard({ course }: { course: FirstAidCourse }) {
           {facts.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
         </dl>
       )}
-      <Link className="btn btn-secondary" href="/contact">Contact us to discuss your requirements</Link>
+      <Link className="btn btn-primary" href="/contact">Contact us to discuss your requirements</Link>
     </article>
   );
 }
