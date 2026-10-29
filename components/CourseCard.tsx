@@ -20,9 +20,14 @@ export function CourseStatusBadge({ course }: { course: Course }) {
 
 // Image header shared by every course card on the site.
 export function CourseCardImage({ image }: { image: CourseImage }) {
+  // Photos sit framed in the middle of the purple panel; placeholder
+  // illustrations sit straight on it.
+  const kind = image.src.endsWith(".svg") ? "icon" : "photo";
   return (
-    // eslint-disable-next-line @next/next/no-img-element -- mix of SVG placeholders and photos
-    <img className="course-card-photo" src={image.src} alt={image.alt} width={600} height={400} />
+    <div className="course-card-frame">
+      {/* eslint-disable-next-line @next/next/no-img-element -- mix of SVG placeholders and photos */}
+      <img className={`course-card-${kind}`} src={image.src} alt={image.alt} width={600} height={400} />
+    </div>
   );
 }
 
