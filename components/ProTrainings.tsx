@@ -41,3 +41,18 @@ export function ProTrainingsVideo() {
 
   return <div className="pt-video" data-width="465" data-facilitator-id="12222" data-course-id="303" />;
 }
+
+// TQUK qualifications widget, from the embed code Tess supplied.
+export function TqukWidget() {
+  return (
+    <a
+      className="tquk-widget"
+      href="https://www.protrainings.uk/centres/91719?a=51321"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element -- third-party widget */}
+      <img src="https://app.protrainings.uk/api/widgets/tquk/91719/12222" alt="TQUK qualifications through ProTrainings" />
+    </a>
+  );
+}

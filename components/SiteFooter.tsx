@@ -10,6 +10,7 @@ export default function SiteFooter() {
         </div>
         <nav className="footer-links" aria-label="Footer">
           <Link href="/courses">Courses</Link>
+          <Link href="/first-aid">First Aid and BLS</Link>
           <Link href="/about">About</Link>
           <Link href="/join-the-team">Join the team</Link>
           <Link href="/contact">Contact</Link>

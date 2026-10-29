@@ -188,6 +188,11 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 .course-facts div { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); gap: 8px; }
 .course-facts dt { font-weight: 600; }
 .course-facts dd { margin: 0; color: var(--ink-soft); }
+.course-card-image { padding-top: 0; overflow: hidden; }
+.course-card-image > .btn { text-align: center; line-height: 1.3; }
+.course-card-photo { display: block; width: calc(100% + 2 * clamp(20px, 3vw, 26px)); max-width: none; margin-inline: calc(-1 * clamp(20px, 3vw, 26px)); height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.course-note { font-size: 0.95rem; font-style: italic; color: var(--plum); }
+.course-card-image .course-facts div { grid-template-columns: 6.5em minmax(0, 1fr); }
 
 .empty-state { background: var(--white); border: 1px dashed #C9B8C8; border-radius: 12px; padding: clamp(28px, 5vw, 56px); display: grid; gap: 14px; justify-items: start; }
 .empty-state h2 { font-size: 1.5rem; }
@@ -260,3 +265,5 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 .protrainings-badge { display: inline-block; justify-self: start; }
 .protrainings-badge img { display: block; width: 180px; height: auto; }
 .pt-video { max-width: 100%; overflow: hidden; }
+.tquk-widget { display: block; justify-self: start; max-width: 766px; width: 100%; }
+.tquk-widget img { display: block; width: 100%; height: auto; }
