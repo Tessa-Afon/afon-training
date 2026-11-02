@@ -52,12 +52,12 @@ export default function FirstAidPage() {
           <div>
             <p className="eyebrow">Accreditation</p>
             <h2>TQUK qualifications through ProTrainings</h2>
+            <ProTrainingsVideo />
           </div>
           <div className="prose">
             <p>Tess is a certified ProTrainings instructor, and our first aid qualifications are awarded through TQUK.</p>
             <TqukWidget />
             <ProTrainingsBadge />
-            <ProTrainingsVideo />
           </div>
         </div>
       </section>
