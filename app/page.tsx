@@ -43,7 +43,9 @@ export default function Home() {
           <p>
             Afon Training provides focused, practical learning delivered in a
             clear and approachable way. Your team joins from work, with no
-            travel. Browse upcoming courses and book places online.
+            travel. Training is delivered across England, Wales and Scotland,
+            with content tailored to the regulations and requirements of each
+            nation. Browse upcoming courses and book places online.
           </p>
         </div>
       </section>
