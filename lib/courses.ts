@@ -56,6 +56,8 @@ const DESCRIPTIONS: Record<string, string> = {
     "Develop awareness of common mental-health needs and how to respond appropriately, sensitively and within your role.",
   "Preparing for a CQC Inspection":
     "Understand how to prepare staff, evidence and everyday systems for a confident CQC inspection.",
+  "Introduction to Practice Finance (England)":
+    "An introduction to how GP practices in England are funded, the main income streams and the essentials of keeping practice finances on track.",
 };
 
 const DETAILS: Record<string, CourseDetails> = {
@@ -135,6 +137,8 @@ const DETAILS: Record<string, CourseDetails> = {
 
 // [date, title, start, end, price]
 const SCHEDULE: [string, string, string, string, number][] = [
+  ["2027-03-10", "Preparing for a CQC Inspection", "09:30", "16:30", FULL_DAY],
+  ["2027-03-17", "Introduction to Practice Finance (England)", "13:00", "16:00", HALF_DAY],
   ["2027-04-13", "Improving the Patient Experience", "13:00", "16:00", HALF_DAY],
   ["2027-04-14", "Medical Record Summarising for GP Practices", "09:30", "12:30", HALF_DAY],
   ["2027-04-15", "Handling Abusive Patients and Conflict Resolution", "13:00", "16:00", HALF_DAY],

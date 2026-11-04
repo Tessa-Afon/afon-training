@@ -15,7 +15,9 @@ function FirstAidCard({ course }: { course: FirstAidCourse }) {
   ].filter((f): f is [string, string] => Boolean(f[1]));
 
   return (
-    <article className="course-card" id={course.slug}>
+    <article className="course-card course-card-image" id={course.slug}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- small pre-sized photos */}
+      <img className="course-card-photo" src={course.image.src} alt={course.image.alt} width={600} height={400} loading="lazy" decoding="async" />
       <h3>{course.title}</h3>
       {course.description.map((p) => <p key={p} className="course-description">{p}</p>)}
       {course.note && <p className="course-note">{course.note}</p>}
