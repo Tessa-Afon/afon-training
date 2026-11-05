@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
-import { BOOKINGS_EMAIL } from "@/lib/site";
+import { ADMIN_EMAIL } from "@/lib/site";
+import { FREE_CANCELLATION_DAYS } from "@/lib/booking";
 
 export const metadata: Metadata = { title: "Booking terms · Afon Training" };
 
-// Draft for Tess to confirm, in particular the cancellation charges.
-// Payment timing must match PAYMENT_DUE_DAYS in lib/booking.ts.
+// Payment timing and the cancellation period must match PAYMENT_DUE_DAYS
+// and FREE_CANCELLATION_DAYS in lib/booking.ts (agreed 5 November 2026).
 export default function BookingTermsPage() {
   return (
     <SitePage>
@@ -22,9 +23,11 @@ export default function BookingTermsPage() {
         <div className="wrap prose">
           <h2>Booking and confirmation</h2>
           <p>
-            Book through the <Link href="/courses">courses page</Link>. Your
-            booking is confirmed when we email you to confirm it, and we will
-            send an invoice at the same time. Attendee names can follow later.
+            Book through the <Link href="/courses">courses page</Link>. We hold
+            your places as soon as you book and email you a copy. Your booking
+            is confirmed when we email you to confirm it, and we will send an
+            invoice. Attendee names can follow later. Online bookings close 2
+            days before the course; after that, please contact us.
           </p>
 
           <h2>Payment</h2>
@@ -44,13 +47,19 @@ export default function BookingTermsPage() {
           <h2>If you need to cancel</h2>
           <p>Please tell us by email. The charge depends on how much notice you give:</p>
           <ul>
-            <li>More than 6 weeks before the course: no charge.</li>
-            <li>Between 2 and 6 weeks before the course: 50% of the course fee.</li>
-            <li>Less than 2 weeks before the course, or not attending: the full course fee.</li>
+            <li>
+              Up to {FREE_CANCELLATION_DAYS} days before the course starts: no
+              charge, and we will refund anything you have paid.
+            </li>
+            <li>
+              Less than {FREE_CANCELLATION_DAYS} days before the course, or not
+              attending: the full course fee.
+            </li>
           </ul>
           <p>
             Instead of cancelling, you can move a place to a later date of the
-            same course, once, if you ask at least 2 weeks before the course.
+            same course, once, if you ask at least {FREE_CANCELLATION_DAYS} days
+            before the course.
           </p>
 
           <h2>If we need to cancel or change a course</h2>
@@ -72,7 +81,7 @@ export default function BookingTermsPage() {
 
           <h2>Questions</h2>
           <p>
-            Email <a href={`mailto:${BOOKINGS_EMAIL}`}>{BOOKINGS_EMAIL}</a> with
+            Email <a href={`mailto:${ADMIN_EMAIL}`}>{ADMIN_EMAIL}</a> with
             any questions about a booking.
           </p>
         </div>

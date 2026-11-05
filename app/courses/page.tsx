@@ -4,14 +4,16 @@ import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
 import CourseCard from "@/components/CourseCard";
 import { groupByMonth, upcomingCourses } from "@/lib/courses";
+import { availabilityFor, loadCounts } from "@/lib/availability";
 
 export const metadata: Metadata = { title: "Upcoming courses · Afon Training" };
 
-// Rebuild hourly so past courses drop off without a redeploy.
-export const revalidate = 3600;
+// Rendered on every visit so place counts and banners are always current.
+export const dynamic = "force-dynamic";
 
-export default function CoursesPage() {
+export default async function CoursesPage() {
   const courses = upcomingCourses();
+  const counts = await loadCounts();
 
   return (
     <SitePage current="courses">
@@ -32,7 +34,9 @@ export default function CoursesPage() {
                     {g.month}
                   </h2>
                   <div className="course-list">
-                    {g.courses.map((c) => <CourseCard key={c.slug} course={c} />)}
+                    {g.courses.map((c) => (
+                      <CourseCard key={c.slug} course={c} availability={availabilityFor(c, counts)} />
+                    ))}
                   </div>
                 </section>
               ))}

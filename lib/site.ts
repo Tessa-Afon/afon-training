@@ -3,6 +3,10 @@
 export const CONTACT_EMAIL = "info@afontraining.co.uk";
 export const BOOKINGS_EMAIL = "bookings@afontraining.co.uk";
 
+// Chris's mailbox. New-booking alerts go here, and customers' replies to
+// booking emails come here.
+export const ADMIN_EMAIL = "admin@afontraining.co.uk";
+
 export const POSTAL_ADDRESS = "6a South Street, Castlethorpe, MK19 7EL";
 
 export const CONTACT_PHONE = "07773 413025";
