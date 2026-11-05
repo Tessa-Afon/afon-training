@@ -18,7 +18,21 @@ Built (October 2026):
 - Live at `afontraining.co.uk` (branch `main`); password-protected sandbox
   on the `dev` branch.
 
-Next: online booking with place counts, then online payment.
+Phase 1 (November 2026, see docs/ADMIN_SETUP.md):
+
+- Bookings saved to a database (Supabase) with live place counts; a
+  booking can't take more places than are left.
+- Automatic banners: "Only 3 places left" (5 or fewer), "Course full",
+  "Bookings closed" (2 days before the course, or closed by Chris).
+- Admin area at /admin for Chris (admin), Peter (owner) and trainers
+  (read-only, own courses): a card per course date, bookings, confirm,
+  cancel, edit, add phone bookings, capacity, register download.
+- Emails: acknowledgement to the booker, alert to admin@, confirmation and
+  cancellation emails from the card.
+- Booking terms: free cancellation up to 7 days before the course.
+
+Next (Phase 2): invoicing and chasing through FreeAgent. The full plan is
+in the "Afon Training: build plan" doc (31 October 2026).
 
 ### Planned site map
 

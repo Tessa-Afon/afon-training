@@ -183,6 +183,8 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 .course-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
 .course-status-open { background: #E6F2EA; color: #1F5E3A; }
 .course-status-closed { background: var(--pale-heather); color: var(--plum); }
+.course-status-few { background: #FDEBCD; color: #7A4A06; }
+.course-status-full { background: #F6DDE3; color: #8A2340; }
 .course-card-single .course-status { align-self: flex-start; }
 .course-facts { margin: 0; display: grid; gap: 6px; font-size: 0.95rem; font-variant-numeric: tabular-nums; padding-top: 14px; border-top: 1px solid var(--line); }
 .course-facts div { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); gap: 8px; }
@@ -267,3 +269,80 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 .pt-video { max-width: 100%; overflow: hidden; }
 .tquk-widget { display: block; justify-self: start; max-width: 766px; width: 100%; }
 .tquk-widget img { display: block; width: 100%; height: auto; }
+
+/* Admin area */
+.btn-small { padding: 9px 14px; font-size: 0.9rem; }
+.btn-danger { color: #8A2340; border-color: #C98A9B; }
+.btn-danger:hover { background: #8A2340; border-color: #8A2340; color: var(--white); }
+.link-button { font: inherit; background: none; border: 0; padding: 0; color: var(--plum); text-decoration: underline; cursor: pointer; }
+.field select { font: inherit; width: 100%; padding: 11px 12px; border: 1px solid #C9B8C8; border-radius: 8px; background: var(--white); color: var(--plum); }
+.pre { white-space: pre-line; }
+.mfa-qr { justify-self: center; background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 6px; }
+.mfa-secret { font-size: 0.85rem; word-break: break-all; background: var(--pale-heather); padding: 2px 6px; border-radius: 4px; }
+.admin { min-height: 100vh; }
+.admin-header { background: var(--plum); color: var(--white); }
+.admin-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 14px; flex-wrap: wrap; }
+.admin-header .brand, .admin-header a, .admin-header .link-button { color: var(--white); }
+.admin-user { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; font-size: 0.95rem; }
+.admin-role { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; background: rgba(255, 255, 255, .15); padding: 2px 8px; border-radius: 4px; margin-left: 4px; }
+.admin-main .wrap { padding-block: 28px 64px; display: grid; gap: 24px; }
+.admin-title { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.admin-title h1 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.admin-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
+.admin-card, .admin-panel { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 12px; align-content: start; }
+.admin-card > .btn { justify-self: start; }
+.admin-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.admin-card-head h2 { font-size: 1.1rem; }
+.admin-card-head h1 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+.admin-card-head a { text-decoration: none; }
+.admin-card-head a:hover { text-decoration: underline; }
+.admin-card-when { color: var(--ink-soft); font-size: 0.95rem; }
+.places { display: grid; gap: 6px; }
+.places-numbers { display: flex; gap: 16px; font-variant-numeric: tabular-nums; }
+.places-numbers strong { font-size: 1.25rem; color: var(--plum); }
+.places-numbers span:last-child { color: var(--ink-soft); }
+.places-bar { height: 10px; background: var(--pale-heather); border-radius: 5px; overflow: hidden; }
+.places-bar span { display: block; height: 100%; background: #2E7D4F; border-radius: 5px; }
+.places-bar-few span { background: #D98A12; }
+.places-bar-full span, .places-bar-closed span { background: #8A2340; }
+.admin-flags { display: grid; gap: 4px; font-size: 0.92rem; color: var(--ink-soft); padding-left: 1.1em; list-style: disc; }
+.admin-flags .flag-new { color: var(--plum); font-weight: 600; }
+.admin-flags .flag-quiet { list-style: none; margin-left: -1.1em; }
+.admin-footnote { font-size: 0.9rem; }
+.admin-back a { font-size: 0.95rem; }
+.admin-notice { background: #E6F2EA; color: #1F5E3A; border-radius: 8px; padding: 12px 16px; font-weight: 500; }
+.admin-money { margin: 0; display: flex; gap: 12px 28px; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+.admin-money dt { font-size: 0.85rem; color: var(--ink-soft); }
+.admin-money dd { margin: 0; font-weight: 600; font-size: 1.1rem; }
+.admin-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.admin-section { display: grid; gap: 12px; }
+.admin-section > h2 { font-size: 1.3rem; }
+.admin-two-col { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); align-items: start; }
+.admin-panel > summary, .admin-cancelled > summary, .admin-edit > summary { cursor: pointer; font-weight: 600; color: var(--plum); }
+.admin-panel[open] > summary { margin-bottom: 8px; }
+.admin-bookings { display: grid; gap: 10px; }
+.admin-cancelled { display: grid; gap: 10px; margin-top: 8px; }
+.admin-booking { background: var(--white); border: 1px solid var(--line); border-radius: 10px; }
+.admin-booking > summary { cursor: pointer; padding: 14px 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.admin-booking-cancelled { opacity: .75; }
+.admin-booking-org { font-weight: 600; color: var(--plum); min-width: 12ch; }
+.admin-booking-ref { font-size: 0.85rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.admin-booking-body { padding: 0 16px 16px; display: grid; gap: 14px; border-top: 1px solid var(--line); padding-top: 14px; }
+.admin-details { margin: 0; display: grid; gap: 6px; font-size: 0.95rem; }
+.admin-details div { display: grid; grid-template-columns: 9em minmax(0, 1fr); gap: 8px; }
+.admin-details dt { font-weight: 600; }
+.admin-details dd { margin: 0; color: var(--ink-soft); overflow-wrap: anywhere; }
+.admin-inline-form { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.9rem; }
+.admin-inline-form label { display: inline-flex; align-items: center; gap: 6px; }
+.admin-edit { display: grid; gap: 12px; }
+.admin-edit[open] > summary { margin-bottom: 10px; }
+.pill { font-size: 0.78rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--pale-heather); color: var(--plum); }
+.pill-new { background: #FDEBCD; color: #7A4A06; }
+.pill-confirmed, .pill-paid { background: #E6F2EA; color: #1F5E3A; }
+.pill-cancelled, .pill-warn { background: #F6DDE3; color: #8A2340; }
+.admin-activity { display: grid; gap: 6px; font-size: 0.92rem; }
+.admin-activity time { color: var(--ink-soft); font-variant-numeric: tabular-nums; margin-right: 4px; }
+@media (max-width: 560px) {
+  .admin-details div { grid-template-columns: 1fr; gap: 0; }
+  .admin-card-head { flex-direction: column-reverse; }
+}
