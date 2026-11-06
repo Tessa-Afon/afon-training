@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { IS_LIVE } from "@/lib/site-gate";
+import SandboxBanner from "@/components/SandboxBanner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,7 +28,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-GB" className={`${inter.variable} ${jakarta.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SandboxBanner />
+        {children}
+      </body>
     </html>
   );
 }
