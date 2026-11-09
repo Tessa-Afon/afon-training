@@ -5,7 +5,7 @@ Phase 1 adds a database (Supabase) for bookings, an admin area at
 steps below are done, the site behaves as before: bookings go to Netlify
 Forms and the banners use the status set in `lib/courses.ts`.
 
-Do the sandbox first. The live site gets its own, separate Supabase
+Do the sandbox first. Set up Resend (section 2) before Supabase steps 5 and 6. The live site gets its own, separate Supabase
 project later, with the same steps.
 
 ## 1. Supabase project
@@ -18,24 +18,25 @@ project later, with the same steps.
    to sign up". Staff are invited; nobody can create their own account.
 4. **Authentication → URL Configuration**: set Site URL to the sandbox
    address, `https://dev--cheery-youtiao-478629.netlify.app`.
-5. **Authentication → Emails → Templates**. In **Invite user**, change the
-   link to:
+5. **Authentication → Emails → SMTP Settings** (set up Resend, section 2,
+   first). Supabase's own sender only manages a few emails an hour, and the
+   email templates can't be edited until this is set:
+   host `smtp.resend.com`, port `465`, username `resend`, password = the
+   Resend API key, sender `bookings@afontraining.co.uk`, name
+   `Afon Training`.
+6. **Authentication → Emails → Templates**. In **Invite user**, click
+   **Source**, find `{{ .ConfirmationURL }}` in the link and replace it with:
 
    ```
    {{ .SiteURL }}/admin/auth/confirm?token_hash={{ .TokenHash }}&type=invite
    ```
 
-   In **Reset password**, change the link to:
+   Save, then do the same in **Reset password** with:
 
    ```
    {{ .SiteURL }}/admin/auth/confirm?token_hash={{ .TokenHash }}&type=recovery
    ```
 
-6. **Authentication → Emails → SMTP Settings**: Supabase's own sender only
-   manages a few emails an hour, so send through Resend (step 2):
-   host `smtp.resend.com`, port `465`, username `resend`, password = the
-   Resend API key, sender `bookings@afontraining.co.uk`, name
-   `Afon Training`.
 7. **Project Settings → API Keys**: note the project URL, the publishable
    (or "anon") key and the secret (or "service_role") key. The secret key
    can read every booking: keep it out of email and chat.
