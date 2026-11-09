@@ -3,6 +3,7 @@ import { COURSES, type Course } from "./courses";
 import { availabilityFor, loadCounts, ukToday, type Availability } from "./availability";
 import { db } from "./supabase/admin";
 import { canSee, type Staff } from "./staff";
+import { daysBetween, loadInvoices, positionFor, type InvoiceRow } from "./invoicing";
 
 export type BookingStatus = "new" | "confirmed" | "cancelled";
 export type InvoiceStatus = "to_invoice" | "invoiced" | "paid" | "not_required";
@@ -32,6 +33,7 @@ export type Booking = {
   created_at: string;
   confirmed_at: string | null;
   cancelled_at: string | null;
+  names_reminder_sent_at?: string | null;
 };
 
 export type Activity = { id: number; at: string; actor_name: string; action: string; detail: string };
@@ -66,25 +68,70 @@ export type CardStats = {
   newBookings: number;
   toInvoice: number;
   toInvoiceValue: number;
+  /** Invoiced and not yet paid (including late-cancellation charges). */
   invoicedValue: number;
   paidValue: number;
   namesMissing: number;
+  /** Bookings with an invoice past its due date. */
+  overdue: number;
+  /** Bookings not fully paid when the course is 14 days away or less. */
+  unpaidSoon: number;
 };
 
-export function statsFor(bookings: Booking[]): CardStats {
-  const live = bookings.filter((b) => b.status !== "cancelled");
-  const value = (b: Booking) => b.places * Number(b.price_per_person);
-  const sum = (list: Booking[]) => list.reduce((t, b) => t + value(b), 0);
-  const toInvoice = live.filter((b) => b.invoice_status === "to_invoice");
-  return {
-    bookings: live.length,
-    newBookings: live.filter((b) => b.status === "new").length,
-    toInvoice: toInvoice.length,
-    toInvoiceValue: sum(toInvoice),
-    invoicedValue: sum(live.filter((b) => b.invoice_status === "invoiced")),
-    paidValue: sum(live.filter((b) => b.invoice_status === "paid")),
-    namesMissing: live.filter((b) => attendeeLines(b).length < b.places).length,
+/** Days before a course from which unpaid bookings are flagged. */
+export const UNPAID_WARNING_DAYS = 14;
+
+export function statsFor(bookings: Booking[], invoices: InvoiceRow[] = [], today = ukToday()): CardStats {
+  const stats: CardStats = {
+    bookings: 0,
+    newBookings: 0,
+    toInvoice: 0,
+    toInvoiceValue: 0,
+    invoicedValue: 0,
+    paidValue: 0,
+    namesMissing: 0,
+    overdue: 0,
+    unpaidSoon: 0,
   };
+  for (const b of bookings) {
+    const price = Number(b.price_per_person);
+    const p = positionFor(b, invoices, today);
+    const live = b.status !== "cancelled";
+    if (live) {
+      stats.bookings++;
+      if (b.status === "new") stats.newBookings++;
+      if (attendeeLines(b).length < b.places) stats.namesMissing++;
+    }
+    let owed = false;
+    if (p.invoices.length > 0) {
+      // Invoiced through FreeAgent: the figures come from its invoices.
+      if (p.difference > 0) {
+        stats.toInvoice++;
+        stats.toInvoiceValue += p.difference * price;
+        owed = true;
+      }
+      stats.invoicedValue += p.dueValue;
+      stats.paidValue += p.paidValue;
+      if (p.dueValue > 0.004) owed = true;
+      if (p.overdue) stats.overdue++;
+    } else if (live) {
+      // Not invoiced through FreeAgent: the status Chris has set by hand.
+      const value = b.places * price;
+      if (b.invoice_status === "to_invoice") {
+        stats.toInvoice++;
+        stats.toInvoiceValue += value;
+        owed = true;
+      } else if (b.invoice_status === "invoiced") {
+        stats.invoicedValue += value;
+        owed = true;
+      } else if (b.invoice_status === "paid") {
+        stats.paidValue += value;
+      }
+    }
+    const daysToGo = daysBetween(today, b.course_date);
+    if (owed && daysToGo >= 0 && daysToGo <= UNPAID_WARNING_DAYS) stats.unpaidSoon++;
+  }
+  return stats;
 }
 
 export type CourseCardData = { course: Course; availability: Availability; stats: CardStats };
@@ -106,16 +153,19 @@ export async function loadCourseCards(staff: Staff, past: boolean): Promise<Cour
       ),
   ]);
   if (rows.error) throw rows.error;
+  const invoices = await loadInvoices((rows.data as Booking[]).map((b) => b.id));
   const bySlug = new Map<string, Booking[]>();
   for (const b of rows.data as Booking[]) bySlug.set(b.course_slug, [...(bySlug.get(b.course_slug) ?? []), b]);
   return courses.map((course) => ({
     course,
     availability: availabilityFor(course, counts, today),
-    stats: statsFor(bySlug.get(course.slug) ?? []),
+    stats: statsFor(bySlug.get(course.slug) ?? [], invoices, today),
   }));
 }
 
-export async function loadCourseBookings(slug: string): Promise<{ bookings: Booking[]; activity: Activity[] }> {
+export async function loadCourseBookings(
+  slug: string,
+): Promise<{ bookings: Booking[]; invoices: InvoiceRow[]; activity: Activity[] }> {
   const [bookings, activity] = await Promise.all([
     db().from("bookings").select("*").eq("course_slug", slug).order("created_at"),
     db()
@@ -127,5 +177,6 @@ export async function loadCourseBookings(slug: string): Promise<{ bookings: Book
   ]);
   if (bookings.error) throw bookings.error;
   if (activity.error) throw activity.error;
-  return { bookings: bookings.data as Booking[], activity: activity.data as Activity[] };
+  const invoices = await loadInvoices((bookings.data as Booking[]).map((b) => b.id));
+  return { bookings: bookings.data as Booking[], invoices, activity: activity.data as Activity[] };
 }
