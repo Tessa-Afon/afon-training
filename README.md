@@ -16,6 +16,7 @@ Next.js and Tailwind, hosted on Netlify (free plan), with Supabase when bookings
 - `supabase/migrations/`: database tables. Setup steps: `docs/ADMIN_SETUP.md`
 - `components/ContactForm.tsx`: contact form
 - `public/__forms.html`: Netlify Forms field list. Keep it in step with both forms.
+- `app/api/form/route.ts`: the same forms on Vercel, emailed through Resend
 - `docs/SCOPING.md`: scope, current phase and page copy
 - `docs/THEME_DESIGN.md`: Heather & Marigold theme brief
 
@@ -28,7 +29,15 @@ pnpm dev
 
 The password gate is off in `pnpm dev` unless `SITE_PASSWORD` is set.
 
-## Hosting (Netlify)
+## Hosting (Netlify, moving to Vercel)
+
+The code runs on both. `next.config.ts` turns Vercel's `VERCEL_ENV` and
+branch into Netlify's deploy contexts (`production` for main,
+`branch-deploy` for dev, `deploy-preview` for other branches), so the
+password gate, robots rules and sandbox banner behave the same. On Vercel
+the forms post to `/api/form`, which emails them to `ADMIN_EMAIL` through
+Resend, instead of Netlify Forms. Everything below describes Netlify until
+the domain moves.
 
 - Owned by the `Tessa-Afon` GitHub and Netlify accounts. Build settings
   live in `netlify.toml`.

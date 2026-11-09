@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { submitNetlifyForm } from "@/lib/forms";
+import { submitForm } from "@/lib/forms";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -12,7 +12,7 @@ export default function ContactForm() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
-    setStatus((await submitNetlifyForm(e.currentTarget)) ? "sent" : "error");
+    setStatus((await submitForm(e.currentTarget)) ? "sent" : "error");
   }
 
   if (status === "sent") {

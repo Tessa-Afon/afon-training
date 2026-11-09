@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { submitNetlifyForm } from "@/lib/forms";
+import { submitForm } from "@/lib/forms";
 import Link from "next/link";
 import { ADMIN_EMAIL } from "@/lib/site";
 import { createBooking } from "@/app/courses/[slug]/book/actions";
@@ -55,7 +55,7 @@ export default function BookingForm({ course }: { course: BookingCourse }) {
           setStatus("sent");
           break;
         case "fallback":
-          setStatus((await submitNetlifyForm(form)) ? "sent" : "error");
+          setStatus((await submitForm(form)) ? "sent" : "error");
           break;
         case "unavailable":
           if (result.placesLeft !== null) setMaxPlaces(result.placesLeft);
