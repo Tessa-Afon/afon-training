@@ -112,10 +112,14 @@ export default function BookingForm({ course }: { course: BookingCourse }) {
         <label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off" /></label>
       </p>
 
+      <p className="form-note form-key">
+        Fields marked <span className="required" aria-hidden="true">*</span> must be filled in.
+      </p>
+
       <fieldset>
         <legend>Places</legend>
         <div className="field field-narrow">
-          <label htmlFor="b-places">Number of places</label>
+          <label htmlFor="b-places">Number of places <span className="required" aria-hidden="true">*</span></label>
           <input
             id="b-places"
             name="places"
@@ -141,21 +145,21 @@ export default function BookingForm({ course }: { course: BookingCourse }) {
         <legend>Booking contact</legend>
         <div className="field-row">
           <div className="field">
-            <label htmlFor="b-name">Your name</label>
+            <label htmlFor="b-name">Your name <span className="required" aria-hidden="true">*</span></label>
             <input id="b-name" name="contact-name" autoComplete="name" required />
           </div>
           <div className="field">
-            <label htmlFor="b-org">Practice or organisation</label>
+            <label htmlFor="b-org">Practice or organisation <span className="required" aria-hidden="true">*</span></label>
             <input id="b-org" name="organisation" autoComplete="organization" required />
           </div>
         </div>
         <div className="field-row">
           <div className="field">
-            <label htmlFor="b-email">Email</label>
+            <label htmlFor="b-email">Email <span className="required" aria-hidden="true">*</span></label>
             <input id="b-email" name="email" type="email" autoComplete="email" required />
           </div>
           <div className="field">
-            <label htmlFor="b-phone">Telephone</label>
+            <label htmlFor="b-phone">Telephone <span className="required" aria-hidden="true">*</span></label>
             <input id="b-phone" name="phone" type="tel" autoComplete="tel" required />
           </div>
         </div>
@@ -164,18 +168,18 @@ export default function BookingForm({ course }: { course: BookingCourse }) {
       <fieldset>
         <legend>Invoice details</legend>
         <div className="field">
-          <label htmlFor="b-address">Invoice address</label>
+          <label htmlFor="b-address">Invoice address <span className="required" aria-hidden="true">*</span></label>
           <textarea id="b-address" name="invoice-address" rows={3} autoComplete="street-address" required />
         </div>
         <div className="field-row">
           <div className="field">
             <label htmlFor="b-invoice-email">
-              Send the invoice to <span className="optional">(if not the email above)</span>
+              Send the invoice to <span className="optional">(optional, if not the email above)</span>
             </label>
             <input id="b-invoice-email" name="invoice-email" type="email" />
           </div>
           <div className="field">
-            <label htmlFor="b-po">Purchase order number <span className="optional">(if needed)</span></label>
+            <label htmlFor="b-po">Purchase order number <span className="optional">(optional)</span></label>
             <input id="b-po" name="po-number" />
           </div>
         </div>
@@ -207,7 +211,7 @@ export default function BookingForm({ course }: { course: BookingCourse }) {
         </div>
         {namesNow && (
           <div className="field">
-            <label htmlFor="b-attendees">Attendee names and email addresses, one per line</label>
+            <label htmlFor="b-attendees">Attendee names and email addresses, one per line <span className="required" aria-hidden="true">*</span></label>
             <textarea id="b-attendees" name="attendees" rows={Math.min(8, Math.max(3, places))} required />
           </div>
         )}
