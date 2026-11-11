@@ -20,8 +20,8 @@ export default function Home() {
         <div className="wrap">
           <h1>Practical training for confident teams</h1>
           <p className="lede">
-            Clear, relevant courses, delivered live online via Microsoft Teams,
-            for people working in GP practices, hospitals, care homes and the
+            Clear, relevant courses, delivered live online via Microsoft Teams
+            or face to face at your organisation, for people working in GP practices, hospitals, care homes and the
             leisure sector.
           </p>
           <div className="actions">
