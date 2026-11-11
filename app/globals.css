@@ -268,6 +268,7 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 .protrainings-badge { display: inline-block; justify-self: start; }
 .protrainings-badge img { display: block; width: 180px; height: auto; }
 .pt-video { max-width: 100%; overflow: hidden; }
+.video-under-heading { margin-top: 24px; }
 .tquk-widget { display: block; justify-self: start; max-width: 766px; width: 100%; }
 .tquk-widget img { display: block; width: 100%; height: auto; }
 
