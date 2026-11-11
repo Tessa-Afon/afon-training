@@ -55,7 +55,7 @@ export default function PrivacyPage() {
           <h2>Cookies</h2>
           <p>
             This website does not use tracking or advertising cookies. The
-            First Aid and BLS page shows a badge, a TQUK widget and a video
+            First Aid and BLS page shows a badge, a qualifications widget and a video
             supplied by ProTrainings, which are loaded from their servers and
             may set their own cookies.
           </p>
