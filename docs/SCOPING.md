@@ -31,8 +31,23 @@ Phase 1 (November 2026, see docs/ADMIN_SETUP.md):
   cancellation emails from the card.
 - Booking terms: free cancellation up to 7 days before the course.
 
-Next (Phase 2): invoicing and chasing through FreeAgent. The full plan is
-in the "Afon Training: build plan" doc (31 October 2026).
+Phase 2 (built November 2026, live once FreeAgent is, early 2027):
+
+- FreeAgent connected once by the owner (Admin > Settings).
+- "Confirm and invoice": customer and invoice created in FreeAgent, due 6
+  weeks before the course (on receipt if sooner), PO number included,
+  emailed by FreeAgent with the PDF.
+- Extra places get a second invoice; fewer places or a cancellation in time
+  get a credit note, set against the unpaid invoice.
+- Morning check: marks bookings paid from FreeAgent; asks bookers for
+  missing attendee names 3 weeks before the course.
+- Money owed page (oldest first, days overdue, contact details, Send
+  reminder) and a To invoice list with "Invoice all confirmed bookings".
+- Warning on cards when a course is 14 days away with unpaid bookings;
+  releasing places stays Chris's decision.
+
+Next (Phase 3): trainer portal and verification. The full plan is in the
+"Afon Training: build plan" doc (31 October 2026).
 
 ### Planned site map
 

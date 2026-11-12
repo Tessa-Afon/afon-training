@@ -67,6 +67,13 @@ export async function requireEditor(): Promise<Staff> {
   return staff;
 }
 
+/** For settings and the FreeAgent connection: the owner only. */
+export async function requireOwner(): Promise<Staff> {
+  const staff = await requireStaff();
+  if (staff.role !== "owner") throw new Error("Not allowed");
+  return staff;
+}
+
 export const canEdit = (s: Staff) => s.role === "owner" || s.role === "admin";
 
 /** Trainers see only their own courses. */

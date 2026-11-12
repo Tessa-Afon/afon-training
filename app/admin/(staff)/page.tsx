@@ -63,6 +63,12 @@ function AdminCourseCard({ card }: { card: CourseCardData }) {
         {s.toInvoice > 0 && (
           <li>{s.toInvoice} to invoice ({formatPrice(s.toInvoiceValue)})</li>
         )}
+        {s.overdue > 0 && (
+          <li className="flag-warn">{s.overdue} overdue {s.overdue === 1 ? "invoice" : "invoices"}</li>
+        )}
+        {s.unpaidSoon > 0 && (
+          <li className="flag-warn">{s.unpaidSoon} not fully paid, course within 2 weeks</li>
+        )}
         {s.namesMissing > 0 && (
           <li>{s.namesMissing} {s.namesMissing === 1 ? "booking is" : "bookings are"} missing attendee names</li>
         )}
