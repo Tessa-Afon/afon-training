@@ -25,27 +25,28 @@ Nothing reaches the live site until step 4, so it's safe to try things.
 
 ## What has to be done first (once)
 
-**By Tess (or whoever signs in as the Tessa-Afon GitHub account):**
-add you to the code. Only the account owner can do this.
-GitHub → the `afon-training` repository → **Settings → Collaborators →
-Add people** → enter your GitHub username or email → role **Write**.
+Everyone uses **one shared login** for the Afon development accounts:
+**development@afontraining.co.uk**, which is the email of the
+**Tessa-Afon** GitHub account. Netlify and Supabase sign in through that
+GitHub account. (Netlify's free plan allows only one member, so we share
+the login rather than add people.) The password and the two-step codes are
+in the shared password manager; ask Peter for access.
 
-**By you:**
-
-1. **A GitHub account.** Free, at github.com. Then accept the email
-   invitation to `Tessa-Afon/afon-training`.
-2. **A paid Claude plan** (Pro or above), which includes Claude Code.
-3. **Connect GitHub to Claude.** Go to **claude.ai/code**. The first time,
-   it asks you to connect GitHub. Sign in as yourself and allow access. The
-   Claude app is already installed on the Afon repository, so you'll see
+1. **A paid Claude plan** (Pro or above), which includes Claude Code.
+2. **Sign in to GitHub as Tessa-Afon.** Go to github.com and sign in with
+   development@afontraining.co.uk, its password and two-step code.
+3. **Connect that GitHub to Claude.** In the same browser, go to
+   **claude.ai/code**. The first time, it asks you to connect GitHub:
+   allow access while you're signed in as Tessa-Afon. The Claude app is
+   already installed on the Afon repository, so you'll see
    `Tessa-Afon/afon-training` in the list.
 4. **Make a Claude project for Afon** (optional but tidy): in Claude Code,
    create a project, call it "Afon Training", and add the
    `Tessa-Afon/afon-training` repository to it. Every conversation in it
    starts with the website's code and its working rules.
 
-You don't need a Netlify login. Netlify builds the sandbox and the live
-site by itself whenever the code changes.
+You don't need to open Netlify. It builds the sandbox and the live site by
+itself whenever the code changes.
 
 ## Making a change
 
@@ -76,13 +77,11 @@ just your change.
 
 ## Optional: letting Claude see the bookings database
 
-Only needed for work on bookings. Ask Peter or Tess to invite your email
-address to the **Afon Training** organisation in Supabase with the
-**Developer** role, and accept the email. Then go to
-**claude.ai/settings/connectors** on the web (it isn't in the desktop
-app's settings), connect **Supabase**, and choose **Afon Training**. Claude
-connects to one Supabase organisation at a time; if Afon is your only one,
-leave it connected.
+Only needed for work on bookings. Go to **claude.ai/settings/connectors**
+on the web (it isn't in the desktop app's settings), connect **Supabase**,
+choose **Continue with GitHub** (signed in as Tessa-Afon), and pick the
+**Afon Training** organisation. Claude connects to one Supabase
+organisation at a time; if Afon is your only one, leave it connected.
 
 ## Ground rules
 
@@ -98,6 +97,10 @@ leave it connected.
   (or on the live site).
 - **Peter works on the site too,** so if you're making a big change, give
   him a heads-up so you don't both change the same page at once.
+- **The shared login can do everything,** including deleting the
+  repository or the database. Use it only through Claude and the steps
+  above, and don't change account settings (email, password, two-step)
+  without telling Peter and Tess.
 
 ## Where to find more
 

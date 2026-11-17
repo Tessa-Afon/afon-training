@@ -50,11 +50,12 @@ their own.
 | Zoho Mail | Tess (super admin); development@; admin@ | Mailboxes |
 
 Who else has access: GitHub collaborators are Tessa-Afon (owner) and
-Peter-StatementNow (write; the Claude app works through this). Chris is
-to be added as a collaborator (write) so he can make changes with Claude
-the same way: see [working-with-claude.md](working-with-claude.md). Nobody
-but the shared login uses Netlify (free plan: one member). Chris also uses
-the site's own admin area and the admin@ mailbox.
+Peter-StatementNow (write; the Claude app works through this). Chris
+works through the shared Tessa-Afon login (development@), not his own
+GitHub account, because Netlify's free plan allows one member; his
+Claude account connects to GitHub and Supabase as Tessa-Afon. See
+[working-with-claude.md](working-with-claude.md). Chris also uses the
+site's own admin area and the admin@ mailbox.
 
 ### Claude and the Afon database (Supabase)
 
@@ -65,11 +66,10 @@ the site's own admin area and the admin@ mailbox.
   (ControlNow's database). For Afon database work, reconnect it to Afon
   Training at claude.ai/settings/connectors (it isn't in the desktop app's
   settings), then switch it back to StatementNow afterwards.
-- Anyone else who wants Claude to work on the Afon database (for example
-  Chris): be invited to the Afon Training organisation with the Developer
-  role, accept the email, then connect Supabase in their own Claude account
-  at claude.ai/settings/connectors and choose Afon Training. If it's their
-  only Supabase organisation they can leave it connected.
+- Chris connects Supabase in his own Claude account at
+  claude.ai/settings/connectors by signing in with GitHub as Tessa-Afon and
+  choosing Afon Training; as it's his only Supabase organisation he can
+  leave it connected.
 | FreeAgent (phase 2) | developer app at dev.freeagent.com; Afon's FreeAgent company | Invoices and payment chasing |
 | Domain registrar | Squarespace (Peter) for now; Tess's own registrar later | DNS |
 
