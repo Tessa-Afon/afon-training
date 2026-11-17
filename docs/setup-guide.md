@@ -6,7 +6,7 @@ the shared password manager). Step-by-step setup for bookings and
 invoicing is in [ADMIN_SETUP.md](ADMIN_SETUP.md); the plain-English version
 for Tess is [TECH_REFERENCE.md](TECH_REFERENCE.md).
 
-**Last checked:** 17 Nov 2026
+**Last checked:** 17 Nov 2026 (accounts)
 
 ## At a glance
 
@@ -33,17 +33,43 @@ for Tess is [TECH_REFERENCE.md](TECH_REFERENCE.md).
 
 ## Accounts
 
-All Afon development accounts are moving under
+All Afon development accounts sit under
 **development@afontraining.co.uk** (a Zoho user Peter created; Tess, as
-Zoho super admin, can reset it).
+Zoho super admin, can reset it). GitHub's primary email has been
+development@ since 17 Nov 2026, and Netlify and Supabase sign in through
+that GitHub account, so one login covers all three. Netlify's free plan
+allows one team member, so people share that login rather than having
+their own.
 
 | Service | Signed in as | What it's for |
 |---|---|---|
 | GitHub | Tessa-Afon (primary email development@) | Code |
 | Netlify | Tessa-Afon (through GitHub) | Hosting, forms, environment variables |
-| Supabase | development@ | Bookings database and staff sign-in |
-| Resend | development@ | Booking emails |
+| Supabase | Tessa-Afon (through GitHub) | Bookings database and staff sign-in |
+| Resend | development@ (API key set up) | Booking emails |
 | Zoho Mail | Tess (super admin); development@; admin@ | Mailboxes |
+
+Who else has access: GitHub collaborators are Tessa-Afon (owner) and
+Peter-StatementNow (write; the Claude app works through this). Chris
+works through the shared Tessa-Afon login (development@), not his own
+GitHub account, because Netlify's free plan allows one member; his
+Claude account connects to GitHub and Supabase as Tessa-Afon. See
+[working-with-claude.md](working-with-claude.md). Chris also uses the
+site's own admin area and the admin@ mailbox.
+
+### Claude and the Afon database (Supabase)
+
+- Peter (peter@receptconsulting.com) is a member of the **Afon Training**
+  Supabase organisation (since 17 Nov 2026).
+- Claude's Supabase connector can only be linked to **one** Supabase
+  organisation at a time. Peter keeps his linked to **StatementNow**
+  (ControlNow's database). For Afon database work, reconnect it to Afon
+  Training at claude.ai/settings/connectors (it isn't in the desktop app's
+  settings), then switch it back to StatementNow afterwards.
+- Chris connects Supabase in his own Claude account at
+  claude.ai/settings/connectors by signing in with GitHub as Tessa-Afon and
+  choosing Afon Training; as it's his only Supabase organisation he can
+  leave it connected.
 | FreeAgent (phase 2) | developer app at dev.freeagent.com; Afon's FreeAgent company | Invoices and payment chasing |
 | Domain registrar | Squarespace (Peter) for now; Tess's own registrar later | DNS |
 
