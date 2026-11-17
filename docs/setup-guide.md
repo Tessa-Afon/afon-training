@@ -50,9 +50,11 @@ their own.
 | Zoho Mail | Tess (super admin); development@; admin@ | Mailboxes |
 
 Who else has access: GitHub collaborators are Tessa-Afon (owner) and
-Peter-StatementNow (write; the Claude app works through this). Chris has
-no GitHub or Netlify access; his access is the site's own admin area and
-the admin@ mailbox.
+Peter-StatementNow (write; the Claude app works through this). Chris is
+to be added as a collaborator (write) so he can make changes with Claude
+the same way: see [working-with-claude.md](working-with-claude.md). Nobody
+but the shared login uses Netlify (free plan: one member). Chris also uses
+the site's own admin area and the admin@ mailbox.
 
 ### Claude and the Afon database (Supabase)
 
