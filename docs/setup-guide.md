@@ -53,6 +53,21 @@ Who else has access: GitHub collaborators are Tessa-Afon (owner) and
 Peter-StatementNow (write; the Claude app works through this). Chris has
 no GitHub or Netlify access; his access is the site's own admin area and
 the admin@ mailbox.
+
+### Claude and the Afon database (Supabase)
+
+- Peter (peter@receptconsulting.com) is a member of the **Afon Training**
+  Supabase organisation (since 17 Nov 2026).
+- Claude's Supabase connector can only be linked to **one** Supabase
+  organisation at a time. Peter keeps his linked to **StatementNow**
+  (ControlNow's database). For Afon database work, reconnect it to Afon
+  Training at claude.ai/settings/connectors (it isn't in the desktop app's
+  settings), then switch it back to StatementNow afterwards.
+- Anyone else who wants Claude to work on the Afon database (for example
+  Chris): be invited to the Afon Training organisation with the Developer
+  role, accept the email, then connect Supabase in their own Claude account
+  at claude.ai/settings/connectors and choose Afon Training. If it's their
+  only Supabase organisation they can leave it connected.
 | FreeAgent (phase 2) | developer app at dev.freeagent.com; Afon's FreeAgent company | Invoices and payment chasing |
 | Domain registrar | Squarespace (Peter) for now; Tess's own registrar later | DNS |
 
