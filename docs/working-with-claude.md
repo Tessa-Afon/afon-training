@@ -5,6 +5,11 @@ the website by asking Claude, the way Peter does. You don't need to write
 code. You describe the change, Claude makes it, you check it on the sandbox,
 and then it goes live.
 
+Prefer to be walked through it? Attach
+[claude-onboarding.md](claude-onboarding.md) to a new chat at claude.ai and
+say "Start my Afon onboarding." Claude then takes you through setup, a
+tour of the sandbox and your first change, one step at a time.
+
 ## How it works, in one picture
 
 1. You ask Claude for a change ("add the June dates to First Aid").
