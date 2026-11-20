@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { submitNetlifyForm } from "@/lib/forms";
 import Link from "next/link";
-import { ADMIN_EMAIL } from "@/lib/site";
+import { BOOKINGS_EMAIL } from "@/lib/site";
 import { createBooking } from "@/app/courses/[slug]/book/actions";
 
 export type BookingCourse = {
@@ -92,7 +92,7 @@ export default function BookingForm({ course }: { course: BookingCourse }) {
         {!namesNow && (
           <p>
             You can send attendee names to{" "}
-            <a href={`mailto:${ADMIN_EMAIL}`}>{ADMIN_EMAIL}</a> whenever you have them.
+            <a href={`mailto:${BOOKINGS_EMAIL}`}>{BOOKINGS_EMAIL}</a> whenever you have them.
           </p>
         )}
       </div>
@@ -236,7 +236,7 @@ export default function BookingForm({ course }: { course: BookingCourse }) {
       {status === "error" && (
         <p className="form-error" role="alert">
           Sorry, your booking could not be sent. Please try again, or email us at{" "}
-          <a href={`mailto:${ADMIN_EMAIL}`}>{ADMIN_EMAIL}</a>.
+          <a href={`mailto:${BOOKINGS_EMAIL}`}>{BOOKINGS_EMAIL}</a>.
         </p>
       )}
       <button className="btn btn-primary" type="submit" disabled={status === "sending"}>
