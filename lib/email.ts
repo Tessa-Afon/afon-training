@@ -2,7 +2,7 @@
 // Plain text on purpose: it reads well everywhere and rarely trips spam
 // filters. Without RESEND_API_KEY nothing is sent, and the booking is
 // still saved and shown in the admin area.
-import { ADMIN_EMAIL, CONTACT_PHONE, SITE_NAME } from "./site";
+import { ADMIN_EMAIL, BOOKINGS_EMAIL, CONTACT_PHONE, SITE_NAME } from "./site";
 import { formatDate, formatPrice } from "./courses";
 import { FREE_CANCELLATION_DAYS, paymentDueText } from "./booking";
 
@@ -63,7 +63,7 @@ export type BookingEmailData = {
 };
 
 const signOff = `${SITE_NAME}
-${ADMIN_EMAIL} · ${CONTACT_PHONE}
+${BOOKINGS_EMAIL} · ${CONTACT_PHONE}
 ${SITE_URL || "https://afontraining.co.uk"}`;
 
 function summary(b: BookingEmailData): string {
@@ -104,7 +104,7 @@ We will confirm your booking by email and send an invoice${b.invoiceEmail ? ` to
 
 You can cancel free of charge up to ${FREE_CANCELLATION_DAYS} days before the course, and send a colleague in someone's place at any time. Full booking terms: ${SITE_URL}/booking-terms
 
-If anything here is wrong, just reply to this email.
+If any of the above information needs updating or correcting, please let us know by replying to this email.
 
 ${signOff}`,
   };
