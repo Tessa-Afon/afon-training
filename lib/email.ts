@@ -2,7 +2,7 @@
 // Plain text on purpose: it reads well everywhere and rarely trips spam
 // filters. Without RESEND_API_KEY nothing is sent, and the booking is
 // still saved and shown in the admin area.
-import { ADMIN_EMAIL, BOOKINGS_EMAIL, CONTACT_PHONE, SITE_NAME } from "./site";
+import { BOOKING_TEAM, BOOKINGS_EMAIL, CONTACT_PHONE, SITE_NAME } from "./site";
 import { formatDate, formatPrice } from "./courses";
 import { FREE_CANCELLATION_DAYS, paymentDueText } from "./booking";
 
@@ -12,7 +12,7 @@ export const SITE_URL = (process.env.SITE_URL ?? "").replace(/\/$/, "");
 
 export const EMAIL_CONFIGURED = Boolean(API_KEY);
 
-type Message = { to: string | string[]; subject: string; text: string; replyTo?: string };
+type Message = { to: string | string[]; subject: string; text: string; replyTo?: string | string[] };
 
 /** Sends one email. Returns false (and logs) rather than throwing, so a
  *  mail problem never loses a booking. */
@@ -30,7 +30,7 @@ export async function sendEmail(m: Message): Promise<boolean> {
         to: Array.isArray(m.to) ? m.to : [m.to],
         subject: m.subject,
         text: m.text,
-        reply_to: m.replyTo ?? ADMIN_EMAIL,
+        reply_to: m.replyTo ?? BOOKING_TEAM,
       }),
       signal: AbortSignal.timeout(10_000),
       cache: "no-store",
@@ -110,10 +110,10 @@ ${signOff}`,
   };
 }
 
-/** To Chris, for every new website booking. */
+/** To the booking team (Chris, bookings@ and Tess), for every new website booking. */
 export function newBookingAlert(b: BookingEmailData, placesLeft: number, adminUrl: string): Message {
   return {
-    to: ADMIN_EMAIL,
+    to: BOOKING_TEAM,
     replyTo: b.email,
     subject: `New booking: ${b.organisation}, ${b.places} ${b.places === 1 ? "place" : "places"}, ${b.courseTitle} ${formatDate(b.courseDate)}`,
     text: `A new booking has come in through the website.
