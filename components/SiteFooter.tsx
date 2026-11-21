@@ -16,6 +16,7 @@ export default function SiteFooter() {
           <Link href="/contact">Contact</Link>
           <Link href="/booking-terms">Booking terms</Link>
           <Link href="/privacy">Privacy</Link>
+          <Link href="/admin">Staff sign in</Link>
         </nav>
       </div>
       <div className="legal">
