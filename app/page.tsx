@@ -41,7 +41,7 @@ export default function Home() {
             <h2>Training that fits real working life</h2>
           </div>
           <p>
-            <strong>Afon Training</strong> provides focused, practical learning delivered in a
+            Afon Training provides focused, practical learning delivered in a
             clear and approachable way. Your team joins from work, with no
             travel. Training is delivered across England, Wales and Scotland,
             with content tailored to the regulations and requirements of each
