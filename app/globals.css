@@ -377,3 +377,6 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
 .planner-meta { font-size: 0.82rem; color: var(--ink-soft); }
 .planner-places { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 .planner-places .places-bar { height: 7px; }
+/* Admin link on the public menu, shown only in staff browsers. */
+.nav a.nav-admin { background: var(--plum); color: var(--white); }
+.nav a.nav-admin:hover { background: var(--heather); }

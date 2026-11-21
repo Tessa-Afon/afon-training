@@ -3,6 +3,7 @@ import BrandMark from "@/components/BrandMark";
 import { requireStaff } from "@/lib/staff";
 import { signOut } from "../auth-actions";
 import AdminNav from "./AdminNav";
+import StaffHint from "./StaffHint";
 
 const ROLE_LABELS = { owner: "Owner", admin: "Admin", trainer: "Trainer" } as const;
 
@@ -10,6 +11,7 @@ export default async function StaffLayout({ children }: { children: React.ReactN
   const staff = await requireStaff();
   return (
     <div className="admin">
+      <StaffHint />
       <header className="admin-header">
         <div className="wrap">
           <Link className="brand" href="/admin">
