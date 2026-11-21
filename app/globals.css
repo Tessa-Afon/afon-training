@@ -348,3 +348,35 @@ section.band-tight { padding-block: 8px clamp(56px, 8vw, 96px); }
   .admin-details div { grid-template-columns: 1fr; gap: 0; }
   .admin-card-head { flex-direction: column-reverse; }
 }
+
+/* Course planner (admin): month boxes across 6 or 12 months. */
+.admin-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+.admin-nav a { text-decoration: none; padding: 4px 12px; border-radius: 999px; font-weight: 600; font-size: 0.95rem; }
+.admin-nav a:hover { background: rgba(255, 255, 255, .12); }
+.admin-nav a[aria-current="page"] { background: var(--white); color: var(--plum); }
+.planner-controls { display: flex; gap: 10px 18px; flex-wrap: wrap; align-items: center; }
+.planner-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; background: var(--white); overflow: hidden; }
+.planner-toggle a { padding: 6px 14px; text-decoration: none; font-weight: 600; font-size: 0.92rem; color: var(--plum); }
+.planner-toggle a[aria-current="page"] { background: var(--plum); color: var(--white); }
+.planner-step { display: flex; gap: 14px; font-size: 0.95rem; }
+.planner { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); }
+.planner-6 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); }
+.planner-month { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; }
+.planner-month h2 { font-size: 1.02rem; padding-bottom: 6px; border-bottom: 2px solid var(--pale-heather); }
+.planner-now h2 { border-bottom-color: var(--marigold); }
+.planner-month ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.planner-empty { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
+.planner-course { display: grid; grid-template-columns: 2.6em minmax(0, 1fr); gap: 10px; line-height: 1.35; }
+.planner-past { opacity: .6; }
+.planner-date { display: grid; justify-items: center; align-content: start; background: var(--pale-heather); border-radius: 8px; padding: 4px 0; }
+.planner-date strong { font-size: 1.15rem; line-height: 1.1; }
+.planner-date span { font-size: 0.72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
+.planner-body { display: grid; gap: 3px; min-width: 0; }
+.planner-body > a { font-weight: 600; font-size: 0.93rem; text-decoration: none; }
+.planner-body > a:hover { text-decoration: underline; }
+.planner-meta { font-size: 0.82rem; color: var(--ink-soft); }
+.planner-places { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.planner-places .places-bar { height: 7px; }
+/* Admin link on the public menu, shown only in staff browsers. */
+.nav a.nav-admin { background: var(--plum); color: var(--white); }
+.nav a.nav-admin:hover { background: var(--heather); }
