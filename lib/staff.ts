@@ -18,6 +18,16 @@ export type Staff = {
 
 export const ADMIN_CONFIGURED = AUTH_CONFIGURED && DATABASE_CONFIGURED;
 
+/** Names (never values) of the Netlify variables this deploy is missing,
+ *  shown on the "Not set up yet" page so setup problems are easy to spot. */
+export const MISSING_SETTINGS = [
+  ["NEXT_PUBLIC_SUPABASE_URL", process.env.NEXT_PUBLIC_SUPABASE_URL],
+  ["NEXT_PUBLIC_SUPABASE_ANON_KEY", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY],
+  ["SUPABASE_SERVICE_ROLE_KEY", process.env.SUPABASE_SERVICE_ROLE_KEY],
+]
+  .filter(([, value]) => !value)
+  .map(([name]) => name as string);
+
 /** Where a signed-in person must go next before they can use the admin
  *  area, or null if they're through: set up or enter a two-step code. */
 async function nextStep(): Promise<"/admin/sign-in" | "/admin/two-step" | null> {
