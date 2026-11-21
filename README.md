@@ -6,7 +6,14 @@ Next.js and Tailwind, hosted on Netlify (free plan), with Supabase when bookings
 
 - `app/page.tsx`: homepage (design awaiting approval)
 - `app/gate/`, `proxy.ts`: password gate for the dev sandbox (the live site is open)
-- `app/courses/[slug]/book/`, `components/BookingForm.tsx`: booking form
+- `app/courses/[slug]/book/`, `components/BookingForm.tsx`: booking form.
+  Saves to Supabase, which checks places are free (`create_booking`).
+- `lib/availability.ts`: places left, the "Only 3 places left" / "Course
+  full" banners, and the 2-day booking cut-off
+- `app/admin/`: admin area (Chris, Peter, trainers): sign-in with two-step
+  codes, a card per course date, bookings, register download
+- `lib/email.ts`: booking emails, sent through Resend
+- `supabase/migrations/`: database tables. Setup steps: `docs/ADMIN_SETUP.md`
 - `components/ContactForm.tsx`: contact form
 - `public/__forms.html`: Netlify Forms field list. Keep it in step with both forms.
 - `docs/SCOPING.md`: scope, current phase and page copy
@@ -32,8 +39,12 @@ The password gate is off in `pnpm dev` unless `SITE_PASSWORD` is set.
   there, then merge `dev` into `main` to publish.
 - Environment variable `SITE_PASSWORD`: the sandbox password. A sandbox or
   preview build returns 503 if it is missing.
-- Forms: Netlify Forms (free plan: 100 submissions a month). Submissions
-  appear under Forms in Netlify and are emailed to bookings@.
+- Forms: the contact form uses Netlify Forms (free plan: 100 submissions a
+  month). Bookings go to Supabase once it is set up for a deploy
+  (`docs/ADMIN_SETUP.md`); without it they fall back to Netlify Forms.
+- Environment variables for bookings and the admin area:
+  `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
+  `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`.
 - Domain: `afontraining.co.uk`. Previously served on `controlnow.co.uk`
   from Vercel; that domain is being freed for Peter's dashboard.
 - Email: Zoho Mail (free plan). Enquiries and bookings go to

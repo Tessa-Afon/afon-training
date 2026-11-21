@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SitePage from "@/components/SitePage";
-import { CourseFacts, CourseStatusBadge } from "@/components/CourseCard";
+import { BookButton, CourseFacts, CourseStatusBadge } from "@/components/CourseCard";
 import { COURSES, findCourse } from "@/lib/courses";
+import { availabilityFor, loadCounts } from "@/lib/availability";
 
 type Params = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
+
+// Rendered on every visit so the places banner is always current.
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return COURSES.map((c) => ({ slug: c.slug }));
@@ -23,14 +27,12 @@ export default async function CoursePage({ params }: Params) {
   if (!course) notFound();
 
   const d = course.details;
-  const bookable = course.status !== "Fully booked";
+  const availability = availabilityFor(course, await loadCounts());
   const card = (
     <div className="course-card course-card-single">
-      <CourseStatusBadge course={course} />
-      <CourseFacts course={course} />
-      {bookable && (
-        <Link className="btn btn-primary" href={`/courses/${course.slug}/book`}>Book places</Link>
-      )}
+      <CourseStatusBadge availability={availability} />
+      <CourseFacts course={course} capacity={availability.capacity} />
+      <BookButton course={course} availability={availability} />
     </div>
   );
 
