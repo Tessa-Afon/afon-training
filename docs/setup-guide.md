@@ -26,8 +26,8 @@ for Tess is [TECH_REFERENCE.md](TECH_REFERENCE.md).
 - `dev` is the sandbox. Claude's pull requests go into `dev`, and Netlify
   rebuilds the sandbox on every merge.
 - `main` is the live site. Merging `dev` into `main` publishes everything
-  waiting on `dev`, so do it deliberately (bookings go live only once
-  `admin@` exists and the live Supabase is set up).
+  waiting on `dev`, so do it deliberately. Online booking went live on
+  21 Nov 2026 (live Supabase project, Production keys in Netlify).
 - Netlify also builds a preview for each pull request
   (`deploy-preview-NN--cheery-youtiao-478629.netlify.app`).
 
@@ -112,7 +112,6 @@ sandbox; nothing to set.
 
 ## Open setup steps
 
-- [ ] Set up the live Supabase project under development@, then say "go live".
-- [ ] Make sure `admin@afontraining.co.uk` exists before merging `dev` into `main`.
+- [x] Live Supabase project set up and online booking live (21 Nov 2026).
 - [ ] Phase 2 invoicing: merge pull request #10, then follow [ADMIN_SETUP.md](ADMIN_SETUP.md) section 6.
 - [ ] Move the domain to Tess's own registrar, keeping the Zoho and Resend records.
