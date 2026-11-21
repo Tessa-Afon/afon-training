@@ -4,6 +4,7 @@
 // a password.
 import { type EmailOtpType } from "@supabase/supabase-js";
 import { NextResponse, type NextRequest } from "next/server";
+import { ADMIN_CONFIGURED } from "@/lib/staff";
 import { authClient } from "@/lib/supabase/auth";
 
 export async function GET(request: NextRequest) {
@@ -12,6 +13,13 @@ export async function GET(request: NextRequest) {
   const type = params.get("type") as EmailOtpType | null;
   const url = request.nextUrl.clone();
   url.search = "";
+
+  // Without the database settings there is nothing to verify against. Show
+  // the "Not set up yet" page instead of failing, and leave the link unused.
+  if (!ADMIN_CONFIGURED) {
+    url.pathname = "/admin/sign-in";
+    return NextResponse.redirect(url);
+  }
 
   if (tokenHash && type) {
     const supabase = await authClient();
