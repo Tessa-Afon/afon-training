@@ -99,6 +99,9 @@ sandbox; nothing to set.
 - Staff sign in with an invitation, a password and an authenticator app;
   roles are in the `staff` table (owner, admin, trainer).
 - The sandbox and live sites use separate Supabase projects.
+- If `/admin/sign-in` says "Not set up yet", it lists which Netlify
+  variables that deploy is missing (names only). Add them for the right
+  deploy context, then redeploy.
 
 ## Third parties
 
