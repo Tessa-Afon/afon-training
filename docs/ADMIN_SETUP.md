@@ -143,3 +143,12 @@ Repeat steps 1, 3 and 5 with a second Supabase project (for example
 `afon-live`), with Site URL `https://afontraining.co.uk` and the Netlify
 variables scoped to **Production**. Resend needs no change. Merge `dev`
 into `main` only once `admin@` exists.
+
+**The sandbox and the live site have separate accounts.** Each Supabase
+project keeps its own users, passwords and authenticator entries, so a
+password set on one doesn't work on the other. To see who can sign in to a
+site, open that site's Supabase project → **Authentication → Users**.
+
+Invitation and password-reset links open a page with a **Continue** button;
+the link is only used when that is pressed, so email scanners that open
+links first can't use it up.

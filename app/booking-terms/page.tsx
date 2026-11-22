@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SitePage from "@/components/SitePage";
 import PageHeading from "@/components/PageHeading";
-import { ADMIN_EMAIL } from "@/lib/site";
+import { BOOKINGS_EMAIL } from "@/lib/site";
 import { FREE_CANCELLATION_DAYS } from "@/lib/booking";
 
 export const metadata: Metadata = { title: "Booking terms · Afon Training" };
@@ -81,7 +81,7 @@ export default function BookingTermsPage() {
 
           <h2>Questions</h2>
           <p>
-            Email <a href={`mailto:${ADMIN_EMAIL}`}>{ADMIN_EMAIL}</a> with
+            Email <a href={`mailto:${BOOKINGS_EMAIL}`}>{BOOKINGS_EMAIL}</a> with
             any questions about a booking.
           </p>
         </div>

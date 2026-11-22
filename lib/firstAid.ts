@@ -18,7 +18,7 @@ const BLENDED = "Face to face, or face to face combined with e-learning";
 export const FIRST_AID_COURSES: FirstAidCourse[] = [
   {
     slug: "first-aid-at-work",
-    title: "TQUK Level 3 First Aid at Work",
+    title: "VQA Level 3 First Aid at Work",
     image: { src: "/first-aid/first-aid-at-work.jpg", alt: "Bandage being wrapped around a hand and wrist" },
     description: [
       "Become a fully trained First Aider for your workplace. Learn how to handle a variety of workplace incidents including choking, bleeding, burns and administering CPR.",
@@ -29,7 +29,7 @@ export const FIRST_AID_COURSES: FirstAidCourse[] = [
   },
   {
     slug: "first-aid-at-work-requalification",
-    title: "TQUK Level 3 First Aid at Work Requalification",
+    title: "VQA Level 3 First Aid at Work Requalification",
     image: { src: "/first-aid/first-aid-at-work-requalification.jpg", alt: "Accident report book" },
     description: [
       "The course is designed as an annual first aid refresher to keep your Level 3 qualification up to date through the 3 year period.",

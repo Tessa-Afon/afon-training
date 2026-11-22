@@ -53,13 +53,17 @@ export default function FirstAidPage() {
         <div className="wrap intro">
           <div>
             <p className="eyebrow">Accreditation</p>
-            <h2>TQUK qualifications through ProTrainings</h2>
+            <h2>VQA qualifications through ProTrainings</h2>
+            <div className="video-under-heading"><ProTrainingsVideo /></div>
           </div>
           <div className="prose">
-            <p>Tess is a certified ProTrainings instructor, and our first aid qualifications are awarded through TQUK.</p>
+            <p>
+              Tess is a certified ProTrainings instructor, and Afon Training is
+              an approved ProTrainings Centre. Our first aid qualifications are
+              awarded through VQA.
+            </p>
             <TqukWidget />
             <ProTrainingsBadge />
-            <ProTrainingsVideo />
           </div>
         </div>
       </section>

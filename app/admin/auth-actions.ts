@@ -1,6 +1,8 @@
 "use server";
 
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { STAFF_HINT_COOKIE } from "@/lib/staff-hint";
 import { authClient } from "@/lib/supabase/auth";
 
 export type FormState = { error: string | null; done?: boolean; email?: string };
@@ -21,6 +23,7 @@ export async function signIn(_prev: FormState, form: FormData): Promise<FormStat
 export async function signOut() {
   const supabase = await authClient();
   await supabase.auth.signOut();
+  (await cookies()).delete(STAFF_HINT_COOKIE);
   redirect("/admin/sign-in");
 }
 
