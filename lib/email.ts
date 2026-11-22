@@ -171,3 +171,21 @@ If you have any questions, or would like to book another date, just reply to thi
 ${signOff}`,
   };
 }
+
+/** To the booker 3 weeks before the course if attendee names are missing. */
+export function namesReminderEmail(b: BookingEmailData, namesGiven: number): Message {
+  const missing = b.places - namesGiven;
+  return {
+    to: b.email,
+    subject: `Attendee names please: ${b.courseTitle}, ${formatDate(b.courseDate)} (${b.reference})`,
+    text: `Dear ${b.contactName},
+
+Your course is coming up soon, and we still need ${namesGiven === 0 ? "the names" : `${missing} more ${missing === 1 ? "name" : "names"}`} of the people attending, so we can send each of them the joining details.
+
+${summary(b)}
+
+Please reply to this email with each attendee's name and email address.
+
+${signOff}`,
+  };
+}

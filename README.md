@@ -13,6 +13,10 @@ Next.js and Tailwind, hosted on Netlify (free plan), with Supabase when bookings
 - `app/admin/`: admin area (Chris, Peter, trainers): sign-in with two-step
   codes, a card per course date, bookings, register download
 - `lib/email.ts`: booking emails, sent through Resend
+- `lib/freeagent.ts`, `lib/invoicing.ts`: invoices, credit notes and
+  payments through FreeAgent (Phase 2); `app/admin/(staff)/money/`: Money
+  owed; `app/admin/(staff)/settings/`: FreeAgent connection
+- `lib/daily.ts`, `netlify/functions/daily.mts`: the morning check
 - `supabase/migrations/`: database tables. Setup steps: `docs/ADMIN_SETUP.md`
 - `components/ContactForm.tsx`: contact form
 - `public/__forms.html`: Netlify Forms field list. Keep it in step with both forms.

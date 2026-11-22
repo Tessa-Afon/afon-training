@@ -93,6 +93,50 @@ alias on Tess's mailbox.
    authenticator app (Microsoft Authenticator, Google Authenticator, or
    similar). Every sign-in then needs a code from the app.
 
+## 6. Phase 2: FreeAgent invoicing
+
+Until these steps are done, invoicing stays manual: Chris sets each
+booking's invoice status by hand, as in Phase 1.
+
+1. **Database:** in the Supabase SQL Editor, paste the whole of
+   `supabase/migrations/0002_invoicing.sql` and run it once.
+2. **FreeAgent app:** at [dev.freeagent.com](https://dev.freeagent.com),
+   sign up (free), then **Create new app**:
+   - Name: `Afon Training admin`
+   - OAuth redirect URI: the address you'll test on, followed by
+     `/admin/freeagent/callback`. For the Phase 2 preview that is
+     `https://deploy-preview-NN--cheery-youtiao-478629.netlify.app/admin/freeagent/callback`
+     (NN = the pull request number); for the sandbox,
+     `https://dev--cheery-youtiao-478629.netlify.app/admin/freeagent/callback`.
+     Add more than one if the form allows it.
+   Note the **OAuth identifier** and **OAuth secret**.
+3. **FreeAgent sandbox account:** from the developer dashboard, create a
+   sandbox company (a free test FreeAgent account). Sign in to it once and
+   fill in the company details, and under Settings switch on invoice
+   reminders if you want FreeAgent to chase automatically.
+4. **Netlify variables** (Branch deploys and Deploy Previews):
+
+   | Variable | Value |
+   | --- | --- |
+   | `FREEAGENT_CLIENT_ID` | OAuth identifier |
+   | `FREEAGENT_CLIENT_SECRET` | OAuth secret. Tick "Contains secret values". |
+   | `FREEAGENT_ENV` | `sandbox` (later `live`) |
+   | `CRON_SECRET` | Any long random text. Tick "Contains secret values". |
+
+   Then **Retry deploy** so the new values are picked up.
+5. Sign in to the admin area as the owner, open **Settings → Connect
+   FreeAgent**, sign in to the FreeAgent sandbox company and approve.
+
+The morning check (marks paid invoices, asks for missing attendee names 3
+weeks before a course) runs by itself at 6am UTC on the live site only.
+On the sandbox, use **Settings → Run the morning check now**.
+
+When the real FreeAgent account starts: create a second FreeAgent app (or
+add the live redirect URI), set `FREEAGENT_ENV` to `live` and the live
+client ID and secret for **Production**, redeploy, and connect again from
+Settings. Bookings waiting to be invoiced can then be raised together from
+**Money owed → Invoice all confirmed bookings**.
+
 ## Going live later
 
 Repeat steps 1, 3 and 5 with a second Supabase project (for example

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import BrandMark from "@/components/BrandMark";
-import { requireStaff } from "@/lib/staff";
+import { canEdit, requireStaff } from "@/lib/staff";
 import { signOut } from "../auth-actions";
 import AdminNav from "./AdminNav";
 import StaffHint from "./StaffHint";
@@ -18,7 +18,7 @@ export default async function StaffLayout({ children }: { children: React.ReactN
             <BrandMark />
             Afon Training admin
           </Link>
-          <AdminNav />
+          <AdminNav money={canEdit(staff)} settings={staff.role === "owner"} />
           <div className="admin-user">
             <span>
               {staff.name} <span className="admin-role">{ROLE_LABELS[staff.role]}</span>

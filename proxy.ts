@@ -33,7 +33,8 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
+  // api/cron checks its own secret (CRON_SECRET), so it skips the gate.
   matcher: [
-    "/((?!gate|__forms\\.html|_next/static|_next/image|favicon.ico|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
+    "/((?!gate|api/cron|__forms\\.html|_next/static|_next/image|favicon.ico|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
   ],
 };
