@@ -123,6 +123,10 @@ booking's invoice status by hand, as in Phase 1.
    | `FREEAGENT_ENV` | `sandbox` (later `live`) |
    | `CRON_SECRET` | Any long random text. Tick "Contains secret values". |
 
+   On the sandbox only the first two are needed: `FREEAGENT_ENV`
+   defaults to `sandbox`, and `CRON_SECRET` only protects the live site's
+   automatic morning check.
+
    Then **Retry deploy** so the new values are picked up.
 5. Sign in to the admin area as the owner, open **Settings → Connect
    FreeAgent**, sign in to the FreeAgent sandbox company and approve.
