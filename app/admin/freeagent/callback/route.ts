@@ -30,6 +30,13 @@ export async function GET(request: NextRequest) {
     return say(`FreeAgent connected${company ? ` to ${company}` : ""}.`);
   } catch (e) {
     console.error("FreeAgent connection failed", e);
-    return say(`FreeAgent could not be connected: ${e instanceof Error ? e.message : "unknown error"}`);
+    // Database errors are plain objects, not Errors: show their message too.
+    const err = e as { message?: string; code?: string };
+    const missingTables = err?.code === "42P01" || err?.code === "PGRST205";
+    return say(
+      missingTables
+        ? "FreeAgent could not be connected: the invoicing tables are missing. Run supabase/migrations/0002_invoicing.sql in this site's Supabase project, then connect again."
+        : `FreeAgent could not be connected: ${err?.message || "unknown error"}${err?.code ? ` (${err.code})` : ""}`,
+    );
   }
 }
