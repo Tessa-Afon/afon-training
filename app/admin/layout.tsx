@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import PressFeedback from "./PressFeedback";
 
 export const metadata: Metadata = {
   title: "Admin · Afon Training",
@@ -9,5 +11,12 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <div className="admin-press">
+      {children}
+      <Suspense fallback={null}>
+        <PressFeedback />
+      </Suspense>
+    </div>
+  );
 }
