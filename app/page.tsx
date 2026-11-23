@@ -26,6 +26,7 @@ export default function Home() {
           </p>
           <div className="actions">
             <Link className="btn btn-primary" href="/courses">Courses in England and Wales</Link>
+            <Link className="btn btn-primary" href="/courses-in-scotland">Courses in Scotland</Link>
             <Link className="btn btn-secondary" href="/contact">Contact us</Link>
           </div>
           <ul className="sectors" aria-label="Sectors we train">
