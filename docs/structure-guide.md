@@ -16,7 +16,7 @@ How the code is laid out. Hosting, accounts and keys are in the
 | Folder | What's in it |
 |---|---|
 | `app/` | Pages: home, `courses/[slug]` (and `book/`), `courses-in-scotland`, `first-aid`, `bespoke-training`, `about`, `contact`, `join-the-team`, `booking-terms`, `privacy`, `gate` (sandbox password) |
-| `app/admin/` | Admin area for Chris, Peter and trainers: bookings by course date, register download, and the course planner (`/admin/planner`, 6 or 12 months; `lib/planner.ts`) |
+| `app/admin/` | Admin area for Chris, Peter and trainers: bookings by course date, register download, the course planner (`/admin/planner`, 6 or 12 months; `lib/planner.ts`), and each staff member's own task board (`/admin/tasks`, rebuilt from DoneNow; `lib/tasks.ts`) |
 | `components/` | Header, footer, course cards, booking and contact forms, sandbox banner |
 | `lib/courses.ts`, `lib/firstAid.ts`, `lib/site.ts` | Course list, dates, prices, trainers and site wording |
 | `lib/availability.ts` | Places left, "Only 3 places left" / "Course full", the 2-day cut-off |
@@ -24,6 +24,7 @@ How the code is laid out. Hosting, accounts and keys are in the
 | `lib/site-gate.ts`, `proxy.ts` | Live or sandbox, and the password gate |
 | `lib/supabase/`, `lib/booking.ts`, `lib/staff.ts`, `lib/admin-data.ts` | Database access |
 | `supabase/migrations/` | Database tables |
+| `scripts/import-donenow.mjs` | One-off: turns a DoneNow (Base44) task export into SQL for the task board. The export holds personal data, so it never goes in the repository |
 | `public/__forms.html` | Netlify Forms field list: keep it in step with both forms |
 | `docs/` | These guides, admin setup, scoping, theme brief, Tess's reference |
 
