@@ -14,7 +14,7 @@ for Tess is [TECH_REFERENCE.md](TECH_REFERENCE.md).
 |---|---|
 | Live site | <https://afontraining.co.uk> (branch `main`) |
 | Sandbox | <https://dev--cheery-youtiao-478629.netlify.app> (branch `dev`, site password, hidden from search engines) |
-| Repository | `Tessa-Afon/afon-training` (Tess's GitHub account; Peter-StatementNow is a collaborator; the Claude app is installed) |
+| Repository | `Tessa-Afon/afon-training`, **public** (Netlify's free plan won't build a private repo from Claude's or Peter's commits; made private by mistake on 25 Nov and deploys stopped) (Tess's GitHub account; Peter-StatementNow is a collaborator; the Claude app is installed) |
 | Hosting | Netlify, site `cheery-youtiao-478629`, Tess's account (free plan). Build settings in `netlify.toml` |
 | Database | Supabase: a sandbox project now; the live project is still to be set up under development@afontraining.co.uk |
 | Email | Zoho Mail (free plan): Tess's mailbox, `bookings@` alias, `admin@` for Chris |
@@ -98,7 +98,11 @@ sandbox; nothing to set.
   (`0001_bookings.sql`; phase 2 adds `0002_invoicing.sql`), pasted into the
   SQL Editor once per project.
 - Staff sign in with an invitation, a password and an authenticator app;
-  roles are in the `staff` table (owner, admin, trainer).
+  roles are in the `staff` table (owner, admin, trainer). On the sandbox
+  it's email and password only: no authenticator code, and the admin area
+  (`/admin`) skips the preview password (the rest of the sandbox keeps it).
+- Tess's task board at `/tasks` has its own password, `TASKS_PASSWORD` in
+  Netlify (all contexts), and skips the preview password on the sandbox.
 - The sandbox and live sites use separate Supabase projects.
 - If `/admin/sign-in` says "Not set up yet", it lists which Netlify
   variables that deploy is missing (names only). Add them for the right
