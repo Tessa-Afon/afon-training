@@ -156,3 +156,20 @@ site, open that site's Supabase project → **Authentication → Users**.
 Invitation and password-reset links open a page with a **Continue** button;
 the link is only used when that is pressed, so email scanners that open
 links first can't use it up.
+
+## 7. Task board (DoneNow rebuilt)
+
+Each staff member gets their own Kanban board at `/admin/tasks` (Inbox,
+Today, This Week, Waiting on Others, Later, then Done). It replaces
+DoneNow on Base44.
+
+1. **Database:** in the Supabase SQL Editor, paste the whole of
+   `supabase/migrations/0003_tasks.sql` and run it. It's safe to run twice.
+   Do this on the sandbox project first, then on the live one.
+2. **Moving tasks across from DoneNow:** Claude turns the DoneNow export
+   into an import file with `scripts/import-donenow.mjs` (it needs the
+   email the person signs in to this admin area with). Paste that file
+   into the SQL Editor and run it. It checks the email is on the staff
+   list, skips anything already imported, and ends by showing how many
+   tasks are now on that person's board.
+
