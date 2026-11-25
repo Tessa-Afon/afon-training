@@ -86,6 +86,7 @@ scoped to **Branch deploys**; live values to **Production**.
 | `RESEND_API_KEY` | Booking emails |
 | `EMAIL_FROM` | Optional: a different sender |
 | `SITE_URL` | Optional: worked out from Netlify's own address if unset |
+| `TASKS_PASSWORD`, `TASKS_OWNER_EMAIL` | Tess's task board at `/tasks`: its password (all contexts), and optionally whose board it is (default tessa@afontraining.co.uk) |
 | `FREEAGENT_CLIENT_ID`, `FREEAGENT_CLIENT_SECRET`, `FREEAGENT_ENV`, `CRON_SECRET` | Phase 2 invoicing ([ADMIN_SETUP.md](ADMIN_SETUP.md), section 6, once that work is merged) |
 
 Netlify's `CONTEXT` tells the site whether it's live (`production`) or the
