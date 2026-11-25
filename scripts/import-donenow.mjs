@@ -84,7 +84,8 @@ end $$;
 
 insert into public.tasks
   (base44_id, title, notes, status, category, is_priority, tag, sub_tag, due_date, done_at, created_at, owner_id)
-select v.*, (select user_id from public.staff where lower(email) = lower(${q(staffEmail)}))
+select v.base44_id, v.title, v.notes::jsonb, v.status, v.category, v.is_priority::boolean, v.tag, v.sub_tag,
+  v.due_date::date, v.done_at::timestamptz, v.created_at::timestamptz, (select user_id from public.staff where lower(email) = lower(${q(staffEmail)}))
 from (values
 ${values.join(",\n")}
 ) as v (base44_id, title, notes, status, category, is_priority, tag, sub_tag, due_date, done_at, created_at)
