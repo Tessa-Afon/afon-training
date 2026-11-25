@@ -1,7 +1,7 @@
-// The task board (rebuilt from DoneNow): shared types and rules, used by
-// the board page, its server actions and the import script's checks.
+// The task board at /tasks (rebuilt from DoneNow for Tess): shared types
+// and rules, used by the board page and its server actions.
 
-export const COLUMNS = ["Inbox", "Today", "This Week", "Waiting", "Later"] as const;
+export const COLUMNS = ["Inbox", "Today", "Farm", "House", "Admin"] as const;
 export const STATUSES = [...COLUMNS, "Done"] as const;
 export const CATEGORIES = ["Work", "Personal", "Reminder"] as const;
 
@@ -35,9 +35,9 @@ export const TASK_COLUMNS =
 export const COLUMN_LABELS: Record<Column, string> = {
   Inbox: "Inbox",
   Today: "Today",
-  "This Week": "This Week",
-  Waiting: "Waiting on Others",
-  Later: "Later",
+  Farm: "Farm",
+  House: "House",
+  Admin: "Admin",
 };
 
 /** Today's date as YYYY-MM-DD in UK time. */

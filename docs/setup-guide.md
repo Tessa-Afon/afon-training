@@ -86,6 +86,7 @@ scoped to **Branch deploys**; live values to **Production**.
 | `RESEND_API_KEY` | Booking emails |
 | `EMAIL_FROM` | Optional: a different sender |
 | `SITE_URL` | Optional: worked out from Netlify's own address if unset |
+| `TASKS_PASSWORD`, `TASKS_OWNER_EMAIL` | Tess's task board at `/tasks`: its password (all contexts), and optionally whose board it is (default tessa@afontraining.co.uk) |
 | `FREEAGENT_CLIENT_ID`, `FREEAGENT_CLIENT_SECRET`, `FREEAGENT_ENV`, `CRON_SECRET` | Phase 2 invoicing ([ADMIN_SETUP.md](ADMIN_SETUP.md), section 6, once that work is merged) |
 
 Netlify's `CONTEXT` tells the site whether it's live (`production`) or the
@@ -100,6 +101,8 @@ sandbox; nothing to set.
   roles are in the `staff` table (owner, admin, trainer). On the sandbox
   it's email and password only: no authenticator code, and the admin area
   (`/admin`) skips the preview password (the rest of the sandbox keeps it).
+- Tess's task board at `/tasks` has its own password, `TASKS_PASSWORD` in
+  Netlify (all contexts), and skips the preview password on the sandbox.
 - The sandbox and live sites use separate Supabase projects.
 - If `/admin/sign-in` says "Not set up yet", it lists which Netlify
   variables that deploy is missing (names only). Add them for the right

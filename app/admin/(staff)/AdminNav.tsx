@@ -9,7 +9,6 @@ export default function AdminNav({ money, settings }: { money: boolean; settings
   const LINKS = [
     { href: "/admin", label: "Courses" },
     { href: "/admin/planner", label: "Planner" },
-    { href: "/admin/tasks", label: "Tasks" },
     ...(money ? [{ href: "/admin/money", label: "Money owed" }] : []),
     ...(settings ? [{ href: "/admin/settings", label: "Settings" }] : []),
   ];

@@ -1,5 +1,6 @@
 // Turns a DoneNow (Base44) Task CSV export into SQL that loads one
-// person's open tasks into the task board (supabase/migrations/0003_tasks.sql).
+// person's tasks into the task board at /tasks (supabase/migrations/0003
+// and 0004).
 //
 //   node scripts/import-donenow.mjs <Task_export.csv> <donenow owner email> <staff email> > import.sql
 //
@@ -37,7 +38,8 @@ function parseCsv(text) {
 }
 
 const q = (v) => (v === null || v === undefined || v === "" ? "null" : `'${String(v).replace(/'/g, "''")}'`);
-const STATUSES = ["Inbox", "Today", "This Week", "Waiting", "Later", "Done"];
+const STATUSES = ["Inbox", "Today", "Farm", "House", "Admin", "Done"];
+// DoneNow's other columns land in Inbox for sorting (see 0004_task_columns.sql).
 const CATEGORIES = ["Work", "Personal", "Reminder"];
 
 function notes(raw) {
