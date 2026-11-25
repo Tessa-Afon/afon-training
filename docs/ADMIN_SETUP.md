@@ -153,6 +153,10 @@ project keeps its own users, passwords and authenticator entries, so a
 password set on one doesn't work on the other. To see who can sign in to a
 site, open that site's Supabase project → **Authentication → Users**.
 
+**The sandbox is simpler:** email and password only, with no authenticator
+code, and `/admin` doesn't ask for the preview password. The live site
+keeps the authenticator step because it holds real bookings.
+
 Invitation and password-reset links open a page with a **Continue** button;
 the link is only used when that is pressed, so email scanners that open
 links first can't use it up.

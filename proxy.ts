@@ -11,6 +11,10 @@ function pass(request: NextRequest) {
 export async function proxy(request: NextRequest) {
   if (IS_LIVE) return pass(request);
 
+  // The admin area has its own email-and-password sign-in, so staff
+  // don't also need the preview password.
+  if (request.nextUrl.pathname.startsWith("/admin")) return pass(request);
+
   const password = process.env.SITE_PASSWORD;
 
   // No password configured: open locally, closed everywhere else.

@@ -97,7 +97,9 @@ sandbox; nothing to set.
   (`0001_bookings.sql`; phase 2 adds `0002_invoicing.sql`), pasted into the
   SQL Editor once per project.
 - Staff sign in with an invitation, a password and an authenticator app;
-  roles are in the `staff` table (owner, admin, trainer).
+  roles are in the `staff` table (owner, admin, trainer). On the sandbox
+  it's email and password only: no authenticator code, and the admin area
+  (`/admin`) skips the preview password (the rest of the sandbox keeps it).
 - The sandbox and live sites use separate Supabase projects.
 - If `/admin/sign-in` says "Not set up yet", it lists which Netlify
   variables that deploy is missing (names only). Add them for the right

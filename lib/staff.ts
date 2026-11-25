@@ -1,7 +1,9 @@
 // Who is signed in to the admin area, and what they may do. Every admin
-// page and action calls requireStaff(): signed in, two-step verified, and
-// listed in the staff table.
+// page and action calls requireStaff(): signed in, two-step verified (live
+// site only; the sandbox is email and password), and listed in the staff
+// table.
 import { redirect } from "next/navigation";
+import { IS_LIVE } from "./site-gate";
 import { AUTH_CONFIGURED, authClient } from "./supabase/auth";
 import { DATABASE_CONFIGURED, db } from "./supabase/admin";
 import type { Course } from "./courses";
@@ -34,6 +36,8 @@ async function nextStep(): Promise<"/admin/sign-in" | "/admin/two-step" | null> 
   const supabase = await authClient();
   const { data: claims } = await supabase.auth.getClaims();
   if (!claims) return "/admin/sign-in";
+  // The sandbox holds test data: email and password are enough there.
+  if (!IS_LIVE) return null;
   const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
   return aal?.currentLevel === "aal2" ? null : "/admin/two-step";
 }

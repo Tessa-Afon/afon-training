@@ -4,6 +4,11 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { STAFF_HINT_COOKIE } from "@/lib/staff-hint";
 import { authClient } from "@/lib/supabase/auth";
+import { IS_LIVE } from "@/lib/site-gate";
+
+/** After signing in: the live site asks for a two-step code; the sandbox
+ *  goes straight in. */
+const AFTER_SIGN_IN = IS_LIVE ? "/admin/two-step" : "/admin";
 
 export type FormState = { error: string | null; done?: boolean; email?: string };
 
@@ -17,7 +22,7 @@ export async function signIn(_prev: FormState, form: FormData): Promise<FormStat
   });
   // The form clears itself after submitting, so hand the email back.
   if (error) return { error: "That email and password don't match. Please try again.", email: text(form, "email") };
-  redirect("/admin/two-step");
+  redirect(AFTER_SIGN_IN);
 }
 
 export async function signOut() {
@@ -46,7 +51,7 @@ export async function setPassword(_prev: FormState, form: FormData): Promise<For
     console.error("Set password failed", error);
     return { error: "The password couldn't be saved. The link may have expired; please ask for a new one." };
   }
-  redirect("/admin/two-step");
+  redirect(AFTER_SIGN_IN);
 }
 
 export type EnrolState = FormState & { factorId?: string; qrCode?: string; secret?: string };
