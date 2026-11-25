@@ -108,3 +108,18 @@ site, open that site's Supabase project → **Authentication → Users**.
 Invitation and password-reset links open a page with a **Continue** button;
 the link is only used when that is pressed, so email scanners that open
 links first can't use it up.
+
+## Task board (DoneNow rebuilt)
+
+Tess's Kanban board is at `/tasks` (columns Inbox, Today, Farm, House,
+Admin, then Done), with its own simple password rather than the staff
+sign-in, remembered on each device for a year.
+
+1. **Database:** in the Supabase SQL Editor, run
+   `supabase/migrations/0003_tasks.sql`, then
+   `supabase/migrations/0004_task_columns.sql` (both safe to run twice).
+2. **Password:** Netlify → Site configuration → Environment variables:
+   add `TASKS_PASSWORD` for all deploy contexts, then redeploy. The board
+   belongs to the staff member whose email is `TASKS_OWNER_EMAIL` (default
+   tessa@afontraining.co.uk).
+

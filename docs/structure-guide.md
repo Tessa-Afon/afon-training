@@ -23,6 +23,7 @@ How the code is laid out. Hosting, accounts and keys are in the
 | `lib/email.ts` | Booking emails |
 | `lib/site-gate.ts`, `proxy.ts` | Live or sandbox, and the password gate |
 | `lib/supabase/`, `lib/booking.ts`, `lib/staff.ts`, `lib/admin-data.ts` | Database access |
+| `app/tasks/` | Tess's task board at `/tasks` (rebuilt from DoneNow): its own simple password (`TASKS_PASSWORD`), not the staff sign-in; `lib/tasks.ts`, `lib/tasks-access.ts`; `scripts/import-donenow.mjs` turned the DoneNow export into import SQL (the export never goes in the repository) |
 | `supabase/migrations/` | Database tables |
 | `public/__forms.html` | Netlify Forms field list: keep it in step with both forms |
 | `docs/` | These guides, admin setup, scoping, theme brief, Tess's reference |
