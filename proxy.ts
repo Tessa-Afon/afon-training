@@ -14,6 +14,8 @@ export async function proxy(request: NextRequest) {
   // The admin area has its own email-and-password sign-in, so staff
   // don't also need the preview password.
   if (request.nextUrl.pathname.startsWith("/admin")) return pass(request);
+  // Likewise the task board, which has its own password.
+  if (request.nextUrl.pathname.startsWith("/tasks")) return pass(request);
 
   const password = process.env.SITE_PASSWORD;
 

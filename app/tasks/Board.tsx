@@ -1,7 +1,7 @@
 "use client";
 
-// The task board, rebuilt from DoneNow: five columns, drag a card (or use
-// its buttons on a phone) to move it, drop it on Done to finish it.
+// Tess's task board, rebuilt from DoneNow: five columns, drag a card (or
+// use its buttons on a phone) to move it, drop it on Done to finish it.
 import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
 import {
@@ -23,9 +23,9 @@ import { addTask, deleteTask, renameTag, updateTask } from "./actions";
 const COLUMN_STYLE: Record<Column, { emoji: string; head: string; count: string }> = {
   Inbox: { emoji: "📥", head: "bg-blue-50 text-blue-900", count: "bg-blue-400" },
   Today: { emoji: "☀️", head: "bg-amber-50 text-amber-900", count: "bg-amber-400" },
-  "This Week": { emoji: "🗓️", head: "bg-purple-50 text-purple-900", count: "bg-purple-400" },
-  Waiting: { emoji: "⏳", head: "bg-orange-50 text-orange-900", count: "bg-orange-400" },
-  Later: { emoji: "📅", head: "bg-emerald-50 text-emerald-900", count: "bg-emerald-400" },
+  Farm: { emoji: "🐑", head: "bg-emerald-50 text-emerald-900", count: "bg-emerald-500" },
+  House: { emoji: "🏠", head: "bg-purple-50 text-purple-900", count: "bg-purple-400" },
+  Admin: { emoji: "🗂️", head: "bg-orange-50 text-orange-900", count: "bg-orange-400" },
 };
 
 const CATEGORY_STRIP: Record<Category, string> = {
@@ -44,9 +44,9 @@ const CATEGORY_ON: Record<Category, string> = {
 const PHONE_ORDER: Record<Column, string> = {
   Today: "order-1",
   Inbox: "order-2",
-  "This Week": "order-3",
-  Waiting: "order-4",
-  Later: "order-5",
+  Farm: "order-3",
+  House: "order-4",
+  Admin: "order-5",
 };
 
 const TAG_HUES = [200, 340, 160, 280, 30, 175, 260, 50, 210, 140, 320, 80, 230, 300, 15];
@@ -279,7 +279,7 @@ export default function Board({ initial, doneCount, today }: { initial: Task[]; 
         }`}
       >
         <span className="font-semibold">✅ Drop here when it&apos;s done</span>
-        <Link href="/admin/tasks/done">Done ({done})</Link>
+        <Link href="/tasks/done">Done ({done})</Link>
       </div>
 
       {open && (
@@ -367,7 +367,7 @@ function Card({
   const latest = task.notes.at(-1);
   const tone = reminder
     ? "border-yellow-200 bg-yellow-50"
-    : task.is_priority || (overdue && task.status === "Later")
+    : task.is_priority
       ? "border-red-300 bg-red-50"
       : "border-gray-100 bg-white";
 
@@ -411,7 +411,7 @@ function Card({
           </div>
         </div>
 
-        {task.status === "Waiting" && latest && (
+        {latest && (
           <p className="mt-1.5 line-clamp-2 text-[12px] italic leading-snug text-gray-500">{latest.text}</p>
         )}
 

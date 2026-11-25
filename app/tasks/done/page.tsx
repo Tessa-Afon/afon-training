@@ -1,18 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { db } from "@/lib/supabase/admin";
-import { requireStaff } from "@/lib/staff";
+import { boardOwnerId } from "@/lib/tasks-access";
 import { TASK_COLUMNS, type Task } from "@/lib/tasks";
 import { restoreTask } from "../actions";
 
-export const metadata: Metadata = { title: "Done tasks" };
-
 export default async function DonePage() {
-  const staff = await requireStaff();
+  const ownerId = await boardOwnerId();
   const { data, error } = await db()
     .from("tasks")
     .select(TASK_COLUMNS)
-    .eq("owner_id", staff.userId)
+    .eq("owner_id", ownerId)
     .eq("status", "Done")
     .order("done_at", { ascending: false, nullsFirst: false })
     .limit(300);
@@ -22,7 +19,7 @@ export default async function DonePage() {
     <>
       <div className="admin-title">
         <h1>Done</h1>
-        <Link href="/admin/tasks">Back to the board</Link>
+        <Link href="/tasks">Back to the board</Link>
       </div>
       <div className="admin-panel">
         {tasks.length === 0 ? (

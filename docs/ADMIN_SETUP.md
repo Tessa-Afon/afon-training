@@ -163,17 +163,21 @@ links first can't use it up.
 
 ## 7. Task board (DoneNow rebuilt)
 
-Each staff member gets their own Kanban board at `/admin/tasks` (Inbox,
-Today, This Week, Waiting on Others, Later, then Done). It replaces
-DoneNow on Base44.
+Tess's Kanban board is at `/tasks` (columns Inbox, Today, Farm, House,
+Admin, then Done). It has its own simple password rather than the staff
+sign-in, and remembers it on each device for a year. It replaces DoneNow
+on Base44.
 
-1. **Database:** in the Supabase SQL Editor, paste the whole of
-   `supabase/migrations/0003_tasks.sql` and run it. It's safe to run twice.
-   Do this on the sandbox project first, then on the live one.
-2. **Moving tasks across from DoneNow:** Claude turns the DoneNow export
-   into an import file with `scripts/import-donenow.mjs` (it needs the
-   email the person signs in to this admin area with). Paste that file
+1. **Database:** in the Supabase SQL Editor, paste and run
+   `supabase/migrations/0003_tasks.sql`, then
+   `supabase/migrations/0004_task_columns.sql`. Both are safe to run twice.
+2. **Password:** in Netlify → Site configuration → Environment variables,
+   add `TASKS_PASSWORD` (any password Tess will remember) for all deploy
+   contexts, then redeploy. The board belongs to the staff member whose
+   email is `TASKS_OWNER_EMAIL` (default tessa@afontraining.co.uk).
+   "Lock the board on this device" at the foot of the board forgets it.
+3. **Moving tasks across from DoneNow:** Claude turns the DoneNow export
+   into an import file with `scripts/import-donenow.mjs`. Paste that file
    into the SQL Editor and run it. It checks the email is on the staff
    list, skips anything already imported, and ends by showing how many
-   tasks are now on that person's board.
-
+   tasks are now on the board.
