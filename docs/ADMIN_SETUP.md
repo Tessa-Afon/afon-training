@@ -186,13 +186,17 @@ on Base44.
 
 Chris and Peter can record a private course for one organisation from
 **Planner → Bespoke Booking** (organisation, course, date, times, trainer,
-places, where, notes). It shows on the planner with a "Bespoke" tag and
+places, agreed price, where, booking contact, invoice address, invoice
+email, PO number, attendees, notes). Nothing is emailed or invoiced
+automatically. It shows on the planner with a "Bespoke" tag and
 can be changed or deleted by clicking it. Trainers see the bespoke courses
 they're teaching but can't add or change them. Bespoke courses never show
 on the website.
 
 1. **Database:** in the Supabase SQL Editor, paste and run
-   `supabase/migrations/0005_bespoke_courses.sql`. It's safe to run twice.
+   `supabase/migrations/0005_bespoke_courses.sql`. It's safe to run twice;
+   if it was run before the contact and invoice fields were added, run it
+   again to add them.
    Until it's run, the planner works as before and the form says the
    database isn't set up yet.
 2. **Live site:** run the same file on the live Supabase project when the
