@@ -181,3 +181,19 @@ on Base44.
    into the SQL Editor and run it. It checks the email is on the staff
    list, skips anything already imported, and ends by showing how many
    tasks are now on the board.
+
+## 8. Bespoke bookings on the planner
+
+Chris and Peter can record a private course for one organisation from
+**Planner → Bespoke Booking** (organisation, course, date, times, trainer,
+places, where, notes). It shows on the planner with a "Bespoke" tag and
+can be changed or deleted by clicking it. Trainers see the bespoke courses
+they're teaching but can't add or change them. Bespoke courses never show
+on the website.
+
+1. **Database:** in the Supabase SQL Editor, paste and run
+   `supabase/migrations/0005_bespoke_courses.sql`. It's safe to run twice.
+   Until it's run, the planner works as before and the form says the
+   database isn't set up yet.
+2. **Live site:** run the same file on the live Supabase project when the
+   planner goes live.
