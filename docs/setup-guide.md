@@ -16,7 +16,7 @@ for Tess is [TECH_REFERENCE.md](TECH_REFERENCE.md).
 | Sandbox | <https://dev--cheery-youtiao-478629.netlify.app> (branch `dev`, site password, hidden from search engines) |
 | Repository | `Tessa-Afon/afon-training`, **public** (Netlify's free plan won't build a private repo from Claude's or Peter's commits; made private by mistake on 25 Nov and deploys stopped) (Tess's GitHub account; Peter-StatementNow is a collaborator; the Claude app is installed) |
 | Hosting | Netlify, site `cheery-youtiao-478629`, Tess's account (free plan). Build settings in `netlify.toml` |
-| Database | Supabase: a sandbox project now; the live project is still to be set up under development@afontraining.co.uk |
+| Database | Supabase, two projects under development@afontraining.co.uk: the **sandbox** project (used by `dev`) and the **live** project (used by `main`; online booking has used it since 21 Nov 2026). Each has its own data and staff sign-ins, and each database change in `supabase/migrations/` is run on both |
 | Email | Zoho Mail (free plan): Tess's mailbox, `bookings@` alias, `admin@` for Chris |
 | Booking emails | Resend, sending as `bookings@afontraining.co.uk` |
 | Domain and DNS | afontraining.co.uk, in Peter's Squarespace Domains for now; moving to a registrar under Tess's own address (keep Zoho's MX records) |
