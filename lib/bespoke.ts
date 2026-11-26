@@ -16,10 +16,25 @@ export type Bespoke = {
   places: number;
   location: string;
   notes: string;
+  contact_name: string;
+  email: string;
+  phone: string;
+  invoice_address: string;
+  invoice_email: string;
+  po_number: string;
+  /** Agreed price for the whole course in pounds, or null if not agreed yet. */
+  price: number | null;
+  attendees: string;
   created_by: string;
 };
 
-const COLUMNS = "id, organisation, title, date, start_time, end_time, trainer, places, location, notes, created_by";
+const COLUMNS =
+  "id, organisation, title, date, start_time, end_time, trainer, places, location, notes, " +
+  "contact_name, email, phone, invoice_address, invoice_email, po_number, price, attendees, created_by";
+
+/** Supabase returns numeric columns as strings. */
+const toBespoke = (r: Record<string, unknown>): Bespoke =>
+  ({ ...r, price: r.price === null || r.price === undefined ? null : Number(r.price) }) as Bespoke;
 
 /** Bespoke courses with from <= date < to. Empty (not an error) until the
  *  database and table are set up, so the planner keeps working. */
@@ -36,13 +51,13 @@ export async function loadBespoke(from: string, to: string): Promise<Bespoke[]> 
     console.error("Bespoke courses not loaded", error);
     return [];
   }
-  return data as Bespoke[];
+  return ((data ?? []) as unknown as Record<string, unknown>[]).map(toBespoke);
 }
 
 export async function findBespoke(id: string): Promise<Bespoke | null> {
   if (!DATABASE_CONFIGURED || !/^[0-9a-f-]{36}$/i.test(id)) return null;
   const { data } = await db().from("bespoke_courses").select(COLUMNS).eq("id", id).maybeSingle();
-  return (data as Bespoke | null) ?? null;
+  return data ? toBespoke(data as unknown as Record<string, unknown>) : null;
 }
 
 /** Trainer names for the form: everyone on the staff list with a trainer
@@ -72,7 +87,17 @@ export function cleanBespoke(f: FormData): BespokeInput | string {
     places: Number(text("places", 6)),
     location: text("location", 300),
     notes: text("notes", 2000),
+    contact_name: text("contact-name"),
+    email: text("email", 254),
+    phone: text("phone", 50),
+    invoice_address: text("invoice-address", 1000),
+    invoice_email: text("invoice-email", 254),
+    po_number: text("po-number", 100),
+    price: null,
+    attendees: text("attendees", 5000),
   };
+  const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const price = text("price", 12).replace(/[£,\s]/g, "");
   if (!v.organisation) return "Please enter the organisation.";
   if (!v.title) return "Please enter the course.";
   if (!/^\d{4}-\d{2}-\d{2}$/.test(v.date)) return "Please enter the date.";
@@ -81,5 +106,12 @@ export function cleanBespoke(f: FormData): BespokeInput | string {
   if (v.start_time && v.end_time && v.end_time <= v.start_time) return "The finish time must be after the start time.";
   if (!v.trainer) return "Please choose the trainer.";
   if (!Number.isInteger(v.places) || v.places < 1 || v.places > 500) return "Please enter the number of places.";
+  if ((v.email && !email.test(v.email)) || (v.invoice_email && !email.test(v.invoice_email)))
+    return "Please check the email addresses.";
+  if (price) {
+    const n = Number(price);
+    if (!Number.isFinite(n) || n < 0 || n > 1_000_000) return "Please enter the price in pounds, like 850 or 850.00.";
+    v.price = Math.round(n * 100) / 100;
+  }
   return v;
 }
