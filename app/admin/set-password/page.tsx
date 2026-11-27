@@ -8,12 +8,12 @@ import { setPassword, type FormState } from "../auth-actions";
 export default function SetPasswordPage() {
   const [state, action, pending] = useActionState<FormState, FormData>(setPassword, { error: null });
   return (
-    <AuthCard title="Choose a password" lede="At least 12 characters. A short phrase is easier to remember than a jumble.">
+    <AuthCard title="Choose a password" lede="At least 8 characters.">
       <form action={action} className="gate-form">
         <label htmlFor="password">New password</label>
-        <input id="password" name="password" type="password" autoComplete="new-password" minLength={12} required />
+        <input id="password" name="password" type="password" autoComplete="new-password" minLength={8} required />
         <label htmlFor="confirm">Type it again</label>
-        <input id="confirm" name="confirm" type="password" autoComplete="new-password" minLength={12} required />
+        <input id="confirm" name="confirm" type="password" autoComplete="new-password" minLength={8} required />
         {state.error && <p className="gate-error" role="alert">{state.error}</p>}
         <button className="btn btn-primary" type="submit" disabled={pending}>
           {pending ? "Saving…" : "Save password"}

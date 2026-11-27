@@ -8,8 +8,7 @@ How the code is laid out. Hosting, accounts and keys are in the
 - Next.js 16 (App Router) and Tailwind, hosted on Netlify. Next.js 16 has
   breaking changes: read `node_modules/next/dist/docs/` before writing code.
 - Supabase for bookings and staff sign-in; Resend for emails.
-- `pnpm install`, `pnpm dev` (the password gate is off locally unless
-  `SITE_PASSWORD` is set), `pnpm build`, `pnpm lint`.
+- `pnpm install`, `pnpm dev`, `pnpm build`, `pnpm lint`.
 
 ## Folders
 
@@ -21,7 +20,7 @@ How the code is laid out. Hosting, accounts and keys are in the
 | `lib/courses.ts`, `lib/firstAid.ts`, `lib/site.ts` | Course list, dates, prices, trainers and site wording |
 | `lib/availability.ts` | Places left, "Only 3 places left" / "Course full", the 2-day cut-off |
 | `lib/email.ts` | Booking emails |
-| `lib/site-gate.ts`, `proxy.ts` | Live or sandbox, and the password gate |
+| `lib/site-gate.ts`, `proxy.ts` | Live or sandbox (`IS_LIVE`), and refreshing admin sign-in |
 | `lib/supabase/`, `lib/booking.ts`, `lib/staff.ts`, `lib/admin-data.ts` | Database access |
 | `app/tasks/` | Tess's task board at `/tasks` (rebuilt from DoneNow): its own simple password (`TASKS_PASSWORD`), not the staff sign-in; `lib/tasks.ts`, `lib/tasks-access.ts` |
 | `supabase/migrations/` | Database tables |

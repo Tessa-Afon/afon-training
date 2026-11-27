@@ -89,9 +89,9 @@ alias on Tess's mailbox.
 
    `trainer_name` must match the trainer name in `lib/courses.ts`: a
    trainer sees only those courses, read-only.
-3. Each person opens their invitation, chooses a password, and sets up an
-   authenticator app (Microsoft Authenticator, Google Authenticator, or
-   similar). Every sign-in then needs a code from the app.
+3. Each person opens their invitation and chooses a password (at least 8
+   characters). If an invitation link fails, the owner can set the
+   password instead in Admin → Settings and tell them.
 
 ## 6. Phase 2: FreeAgent invoicing
 
@@ -149,13 +149,14 @@ variables scoped to **Production**. Resend needs no change. Merge `dev`
 into `main` only once `admin@` exists.
 
 **The sandbox and the live site have separate accounts.** Each Supabase
-project keeps its own users, passwords and authenticator entries, so a
+project keeps its own users and passwords, so a
 password set on one doesn't work on the other. To see who can sign in to a
 site, open that site's Supabase project → **Authentication → Users**.
 
-**The sandbox is simpler:** email and password only, with no authenticator
-code, and `/admin` doesn't ask for the preview password. The live site
-keeps the authenticator step because it holds real bookings.
+**Both sites are email and password only** (since 27 Nov 2026), with no
+authenticator code and no sandbox site password. To bring authenticator
+codes back (review due 1 April 2027), set `TWO_STEP_REQUIRED` to `true` in
+`lib/staff.ts`; the setup pages are still there.
 
 Invitation and password-reset links open a page with a **Continue** button;
 the link is only used when that is pressed, so email scanners that open
