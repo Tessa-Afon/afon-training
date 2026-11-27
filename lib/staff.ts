@@ -18,6 +18,14 @@ export type Staff = {
 
 export const ADMIN_CONFIGURED = AUTH_CONFIGURED && DATABASE_CONFIGURED;
 
+/** Shortest password allowed for staff. */
+export const MIN_PASSWORD = 8;
+
+/** Whether staff must also enter a code from an authenticator app. Off on
+ *  both sites since 27 Nov 2026; the pages and setup flow are kept, so
+ *  turning this back on (review due 1 April 2027) is a one-line change. */
+export const TWO_STEP_REQUIRED = false;
+
 /** Names (never values) of the Netlify variables this deploy is missing,
  *  shown on the "Not set up yet" page so setup problems are easy to spot. */
 export const MISSING_SETTINGS = [
@@ -34,6 +42,7 @@ async function nextStep(): Promise<"/admin/sign-in" | "/admin/two-step" | null> 
   const supabase = await authClient();
   const { data: claims } = await supabase.auth.getClaims();
   if (!claims) return "/admin/sign-in";
+  if (!TWO_STEP_REQUIRED) return null;
   const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
   return aal?.currentLevel === "aal2" ? null : "/admin/two-step";
 }
