@@ -80,7 +80,6 @@ scoped to **Branch deploys**; live values to **Production**.
 
 | Name | What it is |
 |---|---|
-| `SITE_PASSWORD` | The sandbox password (the gate is off on the live site) |
 | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase project address and publishable key |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase secret key (reads every booking: secret) |
 | `RESEND_API_KEY` | Booking emails |
@@ -97,12 +96,15 @@ sandbox; nothing to set.
 - Supabase, London region. Tables and functions in `supabase/migrations/`
   (`0001_bookings.sql`; phase 2 adds `0002_invoicing.sql`), pasted into the
   SQL Editor once per project.
-- Staff sign in with an invitation, a password and an authenticator app;
-  roles are in the `staff` table (owner, admin, trainer). On the sandbox
-  it's email and password only: no authenticator code, and the admin area
-  (`/admin`) skips the preview password (the rest of the sandbox keeps it).
+- Staff sign in with their email and a password (at least 8 characters) on
+  both sites; no authenticator app since 27 Nov 2026 (review due 1 April
+  2027: `TWO_STEP_REQUIRED` in `lib/staff.ts`). Roles are in the `staff`
+  table (owner, admin, trainer). The owner sets anyone's password in
+  Admin → Settings, so nobody relies on reset emails.
+- The sandbox has no site password: it shows a SANDBOX banner and is hidden
+  from search engines. `SITE_PASSWORD` in Netlify is no longer used.
 - Tess's task board at `/tasks` has its own password, `TASKS_PASSWORD` in
-  Netlify (all contexts), and skips the preview password on the sandbox.
+  Netlify (all contexts).
 - The sandbox and live sites use separate Supabase projects.
 - If `/admin/sign-in` says "Not set up yet", it lists which Netlify
   variables that deploy is missing (names only). Add them for the right

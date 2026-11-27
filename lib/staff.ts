@@ -1,9 +1,9 @@
 // Who is signed in to the admin area, and what they may do. Every admin
-// page and action calls requireStaff(): signed in, two-step verified (live
-// site only; the sandbox is email and password), and listed in the staff
-// table.
+// page and action calls requireStaff(): signed in with email and password,
+// and listed in the staff table. No authenticator step on either site since
+// 27 Nov 2026 (Peter: too complicated while starting up); to be reviewed on
+// 1 April 2027.
 import { redirect } from "next/navigation";
-import { IS_LIVE } from "./site-gate";
 import { AUTH_CONFIGURED, authClient } from "./supabase/auth";
 import { DATABASE_CONFIGURED, db } from "./supabase/admin";
 import type { Course } from "./courses";
@@ -19,6 +19,14 @@ export type Staff = {
 };
 
 export const ADMIN_CONFIGURED = AUTH_CONFIGURED && DATABASE_CONFIGURED;
+
+/** Shortest password allowed for staff. */
+export const MIN_PASSWORD = 8;
+
+/** Whether staff must also enter a code from an authenticator app. Off on
+ *  both sites since 27 Nov 2026; the pages and setup flow are kept, so
+ *  turning this back on (review due 1 April 2027) is a one-line change. */
+export const TWO_STEP_REQUIRED = false;
 
 /** Names (never values) of the Netlify variables this deploy is missing,
  *  shown on the "Not set up yet" page so setup problems are easy to spot. */
@@ -36,8 +44,7 @@ async function nextStep(): Promise<"/admin/sign-in" | "/admin/two-step" | null> 
   const supabase = await authClient();
   const { data: claims } = await supabase.auth.getClaims();
   if (!claims) return "/admin/sign-in";
-  // The sandbox holds test data: email and password are enough there.
-  if (!IS_LIVE) return null;
+  if (!TWO_STEP_REQUIRED) return null;
   const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
   return aal?.currentLevel === "aal2" ? null : "/admin/two-step";
 }

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { requireStaff } from "@/lib/staff";
+import { MIN_PASSWORD, requireStaff } from "@/lib/staff";
 import { db } from "@/lib/supabase/admin";
 import { EMAIL_CONFIGURED } from "@/lib/email";
 import { FREEAGENT_CONFIGURED, FREEAGENT_ENV, loadConnection } from "@/lib/freeagent";
-import { disconnectFreeAgent, runMorningCheck } from "./actions";
+import { disconnectFreeAgent, runMorningCheck, setStaffPassword } from "./actions";
 
 type Props = { searchParams: Promise<{ notice?: string }> };
 
@@ -26,7 +26,7 @@ export default async function SettingsPage({ searchParams }: Props) {
   const { notice } = await searchParams;
   const [connection, people] = await Promise.all([
     loadConnection(),
-    db().from("staff").select("name, email, role, trainer_name").order("name"),
+    db().from("staff").select("user_id, name, email, role, trainer_name").order("name"),
   ]);
 
   return (
@@ -95,12 +95,27 @@ export default async function SettingsPage({ searchParams }: Props) {
               <dd>
                 {ROLE_LABELS[p.role as keyof typeof ROLE_LABELS]} · {p.email}
                 {p.trainer_name && ` · sees courses for ${p.trainer_name}`}
+                <form action={setStaffPassword.bind(null, p.user_id, p.name)} className="admin-inline-form">
+                  <label className="sr-only" htmlFor={`pw-${p.user_id}`}>New password for {p.name}</label>
+                  <input
+                    id={`pw-${p.user_id}`}
+                    name="password"
+                    type="text"
+                    autoComplete="off"
+                    minLength={MIN_PASSWORD}
+                    placeholder="New password"
+                    required
+                  />
+                  <button className="btn btn-secondary btn-small" type="submit">Set password</button>
+                </form>
               </dd>
             </div>
           ))}
         </dl>
         <p className="form-note">
-          People are added in Supabase (see docs/ADMIN_SETUP.md, step 5). <Link href="/admin">Back to courses</Link>
+          Everyone signs in with their email and password (at least {MIN_PASSWORD} characters). If someone forgets
+          theirs, set a new one here and tell them. People are added in Supabase (see docs/ADMIN_SETUP.md, step 5).{" "}
+          <Link href="/admin">Back to courses</Link>
         </p>
       </section>
     </>

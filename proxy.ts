@@ -1,45 +1,19 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { GATE_COOKIE, IS_LIVE, gateToken } from "./lib/site-gate";
 import { refreshSession } from "./lib/supabase/proxy";
 
-// Requests that pass the gate: admin pages also get their sign-in
-// session refreshed.
+// Admin pages get their sign-in session refreshed.
 function pass(request: NextRequest) {
   return request.nextUrl.pathname.startsWith("/admin") ? refreshSession(request) : NextResponse.next();
 }
 
 export async function proxy(request: NextRequest) {
-  if (IS_LIVE) return pass(request);
-
-  // The admin area has its own email-and-password sign-in, so staff
-  // don't also need the preview password.
-  if (request.nextUrl.pathname.startsWith("/admin")) return pass(request);
-  // Likewise the task board, which has its own password.
-  if (request.nextUrl.pathname.startsWith("/tasks")) return pass(request);
-
-  const password = process.env.SITE_PASSWORD;
-
-  // No password configured: open locally, closed everywhere else.
-  if (!password) {
-    if (process.env.NODE_ENV === "development") return pass(request);
-    return new NextResponse("Site password not configured.", { status: 503 });
-  }
-
-  const cookie = request.cookies.get(GATE_COOKIE)?.value;
-  if (cookie && cookie === (await gateToken(password))) {
-    return pass(request);
-  }
-
-  const url = request.nextUrl.clone();
-  url.pathname = "/gate";
-  url.search = "";
-  const next = request.nextUrl.pathname + request.nextUrl.search;
-  if (next !== "/") url.searchParams.set("next", next);
-  return NextResponse.redirect(url);
+  // No site-wide password since 27 Nov 2026: the sandbox is open like the
+  // live site, marked by its SANDBOX banner and hidden from search engines
+  // (robots.ts). Staff still sign in to /admin; /tasks has its own password.
+  return pass(request);
 }
 
 export const config = {
-  // api/cron checks its own secret (CRON_SECRET), so it skips the gate.
   matcher: [
     "/((?!gate|api/cron|__forms\\.html|_next/static|_next/image|favicon.ico|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
   ],

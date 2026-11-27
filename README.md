@@ -5,13 +5,13 @@ Website for Afon Training (working name). Separate from Recept Training.
 Next.js and Tailwind, hosted on Netlify (free plan), with Supabase when bookings need a database. Kept separate from the Recept apps so it can be handed over.
 
 - `app/page.tsx`: homepage (design awaiting approval)
-- `app/gate/`, `proxy.ts`: password gate for the dev sandbox (the live site is open)
+- `proxy.ts`: keeps admin sign-in fresh (no site password since 27 Nov 2026)
 - `app/courses/[slug]/book/`, `components/BookingForm.tsx`: booking form.
   Saves to Supabase, which checks places are free (`create_booking`).
 - `lib/availability.ts`: places left, the "Only 3 places left" / "Course
   full" banners, and the 2-day booking cut-off
-- `app/admin/`: admin area (Chris, Peter, trainers): sign-in with two-step
-  codes, a card per course date, bookings, register download
+- `app/admin/`: admin area (Chris, Peter, trainers): email and password
+  sign-in, a card per course date, bookings, register download
 - `lib/email.ts`: booking emails, sent through Resend
 - `lib/freeagent.ts`, `lib/invoicing.ts`: invoices, credit notes and
   payments through FreeAgent (Phase 2); `app/admin/(staff)/money/`: Money
@@ -30,7 +30,6 @@ pnpm install
 pnpm dev
 ```
 
-The password gate is off in `pnpm dev` unless `SITE_PASSWORD` is set.
 
 ## Hosting (Netlify)
 
@@ -39,10 +38,9 @@ The password gate is off in `pnpm dev` unless `SITE_PASSWORD` is set.
 - **`main` is the live site** (afontraining.co.uk): open to everyone, indexed
   by search engines.
 - **`dev` is the sandbox** (Netlify branch deploy, `dev--<site>.netlify.app`):
-  password-protected and hidden from search engines. Build and check changes
+  open (no password since 27 Nov 2026), with a SANDBOX banner, and hidden
+  from search engines. Build and check changes
   there, then merge `dev` into `main` to publish.
-- Environment variable `SITE_PASSWORD`: the sandbox password. A sandbox or
-  preview build returns 503 if it is missing.
 - Forms: the contact form uses Netlify Forms (free plan: 100 submissions a
   month). Bookings go to Supabase once it is set up for a deploy
   (`docs/ADMIN_SETUP.md`); without it they fall back to Netlify Forms.

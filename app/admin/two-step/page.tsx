@@ -2,12 +2,13 @@ import { redirect } from "next/navigation";
 import AuthCard from "../AuthCard";
 import TwoStepForm from "./TwoStepForm";
 import { authClient } from "@/lib/supabase/auth";
-import { ADMIN_CONFIGURED } from "@/lib/staff";
+import { ADMIN_CONFIGURED, TWO_STEP_REQUIRED } from "@/lib/staff";
 
-// Every admin sign-in needs a code from an authenticator app (Microsoft
-// Authenticator, Google Authenticator and so on). First time: set it up.
+// When switched on (TWO_STEP_REQUIRED), every admin sign-in needs a code
+// from an authenticator app. First time: set it up. Off since 27 Nov 2026.
 export default async function TwoStepPage() {
   if (!ADMIN_CONFIGURED) redirect("/admin/sign-in");
+  if (!TWO_STEP_REQUIRED) redirect("/admin");
   const supabase = await authClient();
   const { data: claims } = await supabase.auth.getClaims();
   if (!claims) redirect("/admin/sign-in");

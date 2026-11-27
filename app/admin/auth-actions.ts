@@ -4,13 +4,14 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { STAFF_HINT_COOKIE } from "@/lib/staff-hint";
 import { authClient } from "@/lib/supabase/auth";
-import { IS_LIVE } from "@/lib/site-gate";
 
-/** After signing in: the live site asks for a two-step code; the sandbox
- *  goes straight in. */
-const AFTER_SIGN_IN = IS_LIVE ? "/admin/two-step" : "/admin";
+/** After signing in: straight in, unless authenticator codes are switched
+ *  back on (TWO_STEP_REQUIRED in lib/staff.ts). */
+const AFTER_SIGN_IN = TWO_STEP_REQUIRED ? "/admin/two-step" : "/admin";
 
 export type FormState = { error: string | null; done?: boolean; email?: string };
+
+import { MIN_PASSWORD, TWO_STEP_REQUIRED } from "@/lib/staff";
 
 const text = (f: FormData, name: string) => String(f.get(name) ?? "").trim();
 
@@ -43,7 +44,7 @@ export async function sendPasswordReset(_prev: FormState, form: FormData): Promi
 
 export async function setPassword(_prev: FormState, form: FormData): Promise<FormState> {
   const password = String(form.get("password") ?? "");
-  if (password.length < 12) return { error: "Please use at least 12 characters." };
+  if (password.length < MIN_PASSWORD) return { error: `Please use at least ${MIN_PASSWORD} characters.` };
   if (password !== String(form.get("confirm") ?? "")) return { error: "The two passwords don't match." };
   const supabase = await authClient();
   const { error } = await supabase.auth.updateUser({ password });
