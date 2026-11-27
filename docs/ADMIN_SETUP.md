@@ -89,9 +89,9 @@ alias on Tess's mailbox.
 
    `trainer_name` must match the trainer name in `lib/courses.ts`: a
    trainer sees only those courses, read-only.
-3. Each person opens their invitation, chooses a password, and sets up an
-   authenticator app (Microsoft Authenticator, Google Authenticator, or
-   similar). Every sign-in then needs a code from the app.
+3. Each person opens their invitation and chooses a password (at least 8
+   characters). No authenticator app since 27 Nov 2026 (review due 1 April
+   2027: `TWO_STEP_REQUIRED` in `lib/staff.ts`).
 
 ## Going live later
 

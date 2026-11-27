@@ -97,10 +97,10 @@ sandbox; nothing to set.
 - Supabase, London region. Tables and functions in `supabase/migrations/`
   (`0001_bookings.sql`; phase 2 adds `0002_invoicing.sql`), pasted into the
   SQL Editor once per project.
-- Staff sign in with an invitation, a password and an authenticator app;
-  roles are in the `staff` table (owner, admin, trainer). On the sandbox
-  it's email and password only: no authenticator code, and the admin area
-  (`/admin`) skips the preview password (the rest of the sandbox keeps it).
+- Staff sign in with their email and a password (at least 8 characters) on
+  both sites; no authenticator app since 27 Nov 2026 (review due 1 April
+  2027: `TWO_STEP_REQUIRED` in `lib/staff.ts`). Roles are in the `staff`
+  table (owner, admin, trainer).
 - Tess's task board at `/tasks` has its own password, `TASKS_PASSWORD` in
   Netlify (all contexts), and skips the preview password on the sandbox.
 - The sandbox and live sites use separate Supabase projects.
